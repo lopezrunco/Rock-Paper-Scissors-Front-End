@@ -1,5 +1,5 @@
 import './style.scss'
-import notFoundImg from '../../assets/img/404.png'
+import notFoundImg from '../../../assets/img/404.png'
 
 function NotFound() {
     return (
