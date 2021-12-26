@@ -1,0 +1,34 @@
+@import '../../Variables.scss';
+
+footer {
+  padding-top: 20px;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: $text-color;
+
+    a {
+      color: $primary-color;
+      transition: $main-transition;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  footer .footer-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}

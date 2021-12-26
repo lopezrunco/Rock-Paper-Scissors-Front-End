@@ -1,0 +1,9 @@
+.page-title {
+  width: 50%;
+}
+
+@media screen and (max-width: 992px) {
+  .page-title {
+    width: 100%;
+  }
+}

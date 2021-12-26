@@ -1,0 +1,39 @@
+import rpsLogo from '../../assets/img/rps-logo.png'
+import './style.scss'
+
+function WelcomeScreen() {
+    return (
+        <main className='welcome-screen'>
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <div className='intro'>
+                            <img src={rpsLogo} />
+                            <h1>ROCK PAPER SCISSORS</h1>
+                            <div>
+                                <p>
+                                    Many of us used to play it in a school to resolve disputes or
+                                    just to spend some time. <br /> But how to play if your friends are far
+                                    away? Voilà!
+                                </p>
+                                <div className='separator'></div>
+                                <h4>What are the rules?</h4>
+                                <p>
+                                    The rules are very simple and probably you remember them from your childhood:
+                                    <br />
+                                    <br />
+                                    If you choose Rock, you will win against Scissors but lose against Paper.<br />
+                                    If you choose Scissors, you will win against Paper but lose against Rock.<br />
+                                    If you choose Paper, you will win against Rock but lose against Scissors.<br />
+                                    There are 3 rounds. The game ends when somebody gets 2 wins.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    )
+}
+
+export default WelcomeScreen

@@ -1,0 +1,27 @@
+.welcome-screen {
+  .container {
+    padding-top: 1rem;
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+
+      img {
+        max-width: 450px;
+      }
+
+      h1 {
+          font-weight: 900;
+      }
+
+      .separator {
+        margin: 0 auto;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
