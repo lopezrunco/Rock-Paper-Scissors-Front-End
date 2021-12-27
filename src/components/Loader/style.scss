@@ -1,0 +1,15 @@
+@import '../../Variables.scss';
+
+.loader {
+    background-color: $dark-background-color;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: $light-text-color;
+}

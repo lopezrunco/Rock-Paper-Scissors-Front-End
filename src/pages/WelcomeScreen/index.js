@@ -8,7 +8,7 @@ function WelcomeScreen() {
                 <div className="row">
                     <div className="col">
                         <div className='intro'>
-                            <img src={rpsLogo} />
+                            <img src={rpsLogo} alt='RPS game app' />
                             <h1>ROCK PAPER SCISSORS</h1>
                             <div>
                                 <p>

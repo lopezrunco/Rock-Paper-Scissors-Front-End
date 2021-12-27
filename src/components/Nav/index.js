@@ -1,4 +1,4 @@
-import { House, PeopleFill, Person, Github } from 'react-bootstrap-icons'
+import { House, PeopleFill, Person } from 'react-bootstrap-icons'
 import NavigationLink from '../NavigationLink'
 
 
@@ -24,7 +24,6 @@ function Nav() {
                                 </li>
                             </ul>
                         </nav>
-                        {/* <NavigationLink to="https://github.com/lopezrunco/Rock-Paper-Scissors-Front-End"><Github /></NavigationLink> */}
                     </div>
                 </div>
             </div>

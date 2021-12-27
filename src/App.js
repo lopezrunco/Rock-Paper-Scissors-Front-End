@@ -1,16 +1,19 @@
 import { createContext, useEffect, useReducer } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import WelcomeScreen from './pages/WelcomeScreen'
 import NotFound from './pages/access/NotFound'
 import MultiPlayerStartScreen from './pages/MultiPlayerStartScreen'
 import SinglePlayerStartScreen from './pages/SinglePlayerStartScreen'
 import Login from './pages/security/Login'
+import Register from './pages/security/Register'
+import SelectOponent from './pages/game/SelectOponent'
 
 import BackgroundShape from './components/BackgroundShape'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import NavigationScrollToTop from './components/NavigationScrollToTop'
+import Loader from './components/Loader'
 
 import { ENABLE_MFA, HIDE_LOADER, LOGIN, LOGOUT, REFRESH_TOKEN, SHOW_LOADER } from './action-types'
 
@@ -34,7 +37,7 @@ const reducer = (state, action) => {
     case LOGIN:
       // Se toman los valores del usuario y se setean en el local storage
       localStorage.setItem('user', JSON.stringify(action.payload.user))
-      localStorage.setItem('token', action.payload.user.role)
+      localStorage.setItem('token', action.payload.user.token)
       localStorage.setItem('refreshToken', action.payload.user.refreshToken)
 
       // Retorna nuevo estado
@@ -103,7 +106,7 @@ const reducer = (state, action) => {
 }
 
 function App() {
-  const location = useLocation()
+  // const location = useLocation()
 
   // Hook useReducer: se envia la funcion reducer y el estado inicial que manejara
   // Deja disponible el estado y el dispatch
@@ -136,14 +139,21 @@ function App() {
         <NavigationScrollToTop />
 
         <Routes>
+          <Route path="/select-oponent" element={<SelectOponent />} />
           <Route path="/multi-player-start-screen" element={<MultiPlayerStartScreen />} />
           <Route path="/single-player-start-screen" element={<SinglePlayerStartScreen />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
         <Footer />
+
+        {/* El loader se muestra si showingLoader es true */}
+        {state.showingLoader && (
+          <Loader />
+        )}
 
       </div>
     </AuthContext.Provider>
