@@ -1,7 +1,6 @@
 import { useContext, useReducer } from "react"
 import { useNavigate } from "react-router-dom"
 
-// import { UsersContext } from "../.."
 import { AuthContext } from "../../../../../App"
 import { apiUrl } from "../../../../../utils/api-url"
 import { refreshToken } from "../../../../../utils/refresh-token"
@@ -43,10 +42,6 @@ function UserCard({ user }) {
     const [state, dispatch] = useReducer(reducer, initialState)
     const { state: authState, dispatch: authDispatch } = useContext(AuthContext)
     const navigate = useNavigate()
-    // const { state: usersState, dispatch: usersDispatch } = useContext(UsersContext)
-
-    console.log('Usuario actual', authState.user.nickname)
-    console.log('Oponente seleccionado', user.nickname)
 
     // Envia los datos a la API
     const createGame = (userId) => {
@@ -76,7 +71,7 @@ function UserCard({ user }) {
                 type: CREATE_GAME_SUCCESS,
                 payload: data
             })
-            navigate('/')
+            navigate('/game-created')
         }).catch(error => {
             console.error('Error trying to create a new game', error)
 
@@ -102,18 +97,13 @@ function UserCard({ user }) {
         <div className="col-md-4">
             <div className="user-card">
                 <h4 className="nickname">{user.nickname}</h4>
-                <p>{user.id}</p>
 
-                <button onClick={createGame(user.id)} disabled={state.isSending}>
-                    {state.isSending ? (
-                        "Please wait..."
-                    ) : (
-                        "Create game"
-                    )}
+                <button onClick={() => createGame(user.id)} disabled={state.isSending}>
+                    {state.isSending ? ("Please wait...") : ("Create game")}
                 </button>
 
                 {state.hasError && (
-                    <span className="form-error">An error ocurred</span>
+                    <span className="form-error">An error has occurred!</span>
                 )}
             </div>
         </div>
