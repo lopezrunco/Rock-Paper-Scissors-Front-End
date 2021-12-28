@@ -1,42 +1,123 @@
-import { useContext } from "react"
+import { useContext, useReducer } from "react"
 import { useNavigate } from "react-router-dom"
 
-import { UsersContext } from "../.."
+// import { UsersContext } from "../.."
 import { AuthContext } from "../../../../../App"
 import { apiUrl } from "../../../../../utils/api-url"
+import { refreshToken } from "../../../../../utils/refresh-token"
+import { CREATE_GAME_FAILURE, CREATE_GAME_REQUEST, CREATE_GAME_SUCCESS } from "../../action-types"
 
+const initialState = {
+    playerOneId: '',
+    playerTwoId: '',
+    isSending: false,
+    hasError: false
+}
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case CREATE_GAME_REQUEST:
+            return {
+                ...state,
+                isSending: true,
+                hasError: false
+            }
+        case CREATE_GAME_SUCCESS:
+            return {
+                ...state,
+                isSending: false,
+                game: action.payload.game
+            }
+        case CREATE_GAME_FAILURE:
+            return {
+                ...state,
+                isSending: false,
+                hasError: true
+            }
+        default:
+            return state
+    }
+}
 
 function UserCard({ user }) {
-    const navigate = useNavigate()
+    const [state, dispatch] = useReducer(reducer, initialState)
     const { state: authState, dispatch: authDispatch } = useContext(AuthContext)
+    const navigate = useNavigate()
     // const { state: usersState, dispatch: usersDispatch } = useContext(UsersContext)
+
+    console.log('Usuario actual', authState.user.nickname)
+    console.log('Oponente seleccionado', user.nickname)
+
+    // Envia los datos a la API
+    const createGame = (userId) => {
+        dispatch({
+            type: CREATE_GAME_REQUEST
+        })
+
+        // Llamada al endpoint de crear juego
+        fetch(apiUrl('/games/create'), {
+            method: 'POST',
+            headers: {
+                'Authorization': authState.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                playerOneId: authState.user.id,
+                playerTwoId: userId
+            })
+        }).then(response => {
+            if (response.ok) {
+                return response.json()
+            } else {
+                throw response
+            }
+        }).then(data => {
+            dispatch({
+                type: CREATE_GAME_SUCCESS,
+                payload: data
+            })
+            navigate('/')
+        }).catch(error => {
+            console.error('Error trying to create a new game', error)
+
+            // Si da error 401, quiere decir que el token por algun motivo estaba mal
+            if (error.status === 401) {
+                refreshToken(
+                    authState.refreshToken,
+                    authDispatch,
+                    navigate,
+                    () => createGame()  // Si el refresh sale ok, reintenta hacer la peticion
+                )
+            } else if (error.status === 403) {
+                navigate('/forbidden')
+            } else {
+                dispatch({
+                    type: CREATE_GAME_FAILURE
+                })
+            }
+        })
+    }
 
     return (
         <div className="col-md-4">
             <div className="user-card">
                 <h4 className="nickname">{user.nickname}</h4>
                 <p>{user.id}</p>
+
+                <button onClick={createGame(user.id)} disabled={state.isSending}>
+                    {state.isSending ? (
+                        "Please wait..."
+                    ) : (
+                        "Create game"
+                    )}
+                </button>
+
+                {state.hasError && (
+                    <span className="form-error">An error ocurred</span>
+                )}
             </div>
         </div>
     )
-
-    // const createGame = () => {
-    //     fetch(apiUrl('/games/create'), {
-    //         method: 'POST',
-    //         headers: {
-    //             'Authorization': authState.token,
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }).then(response => {
-    //         if (response.ok) {
-    //             return response.json()
-    //         } else {
-    //             throw response
-    //         }
-    //     }).then(data => {
-
-    //     })
-    // }
 }
 
 export default UserCard
