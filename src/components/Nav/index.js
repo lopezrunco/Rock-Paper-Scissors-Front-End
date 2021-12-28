@@ -1,10 +1,22 @@
-import { House, PeopleFill, Person } from 'react-bootstrap-icons'
+import { House, People, Person, Joystick, BoxArrowRight } from 'react-bootstrap-icons'
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react/cjs/react.development'
+import { LOGOUT } from '../../action-types'
+
+import { AuthContext } from '../../App'
 import NavigationLink from '../NavigationLink'
 
 
 import './style.scss'
 
 function Nav() {
+    const { state: authState, dispatch } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const logout = () => {
+        dispatch({ type: LOGOUT })
+        navigate('/logged-out')
+    }
 
     return (
         <header>
@@ -20,10 +32,14 @@ function Nav() {
                                     <NavigationLink to="/single-player-start-screen"><Person /><span>Singleplayer</span></NavigationLink>
                                 </li>
                                 <li>
-                                    <NavigationLink to="/multi-player-start-screen"><PeopleFill /><span>Multiplayer</span></NavigationLink>
+                                    <NavigationLink to="/multi-player-start-screen"><People /><span>Multiplayer</span></NavigationLink>
+                                </li>
+                                <li>
+                                    <NavigationLink to="/on-play"><Joystick /><span>OnPlay</span></NavigationLink>
                                 </li>
                             </ul>
                         </nav>
+                        <button className='logout-button' onClick={logout}><BoxArrowRight /></button>
                     </div>
                 </div>
             </div>

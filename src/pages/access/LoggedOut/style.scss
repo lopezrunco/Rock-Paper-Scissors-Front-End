@@ -1,0 +1,38 @@
+@import "../../../Variables.scss";
+
+.logged-out {
+  .img-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+      max-width: 200px;
+    }
+  }
+
+  .text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+
+    h3 {
+      font-size: 7rem;
+      color: $secondary-color;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logged-out {
+    .text-col {
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}

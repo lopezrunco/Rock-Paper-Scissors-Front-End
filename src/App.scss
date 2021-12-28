@@ -34,17 +34,24 @@ a:hover {
 }
 
 .primary-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
   background-color: $secondary-color;
-  background-image: url('./assets/img/bg.png');
+  background-image: url("./assets/img/bg.png");
   color: $light-text-color;
   padding: 1rem 2rem;
   margin: 1rem 0;
   border: none;
   cursor: pointer;
   clip-path: polygon(0% 0%, 5% 100%, 87% 88%, 99% 90%, 94% 4%);
-  transition: all .5s;
-  
+  transition: all 0.5s;
+
+  &--faded {
+    @extend .primary-button;
+    background-color: $secondary-color-faded;
+  }
+
   &:hover {
     background-color: darken($color: $secondary-color, $amount: 10);
     color: $light-text-color;
@@ -53,20 +60,26 @@ a:hover {
 }
 
 .user-card {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
   background-color: $accent-color;
-  background-image: url('./assets/img/bg.png');
-  color: $light-text-color;
+  background-image: url("./assets/img/bg.png");
+  color: $text-color;
   padding: 1rem 3rem;
   margin: 1rem 0;
   border: none;
   cursor: pointer;
   clip-path: polygon(5% 4%, 11% 96%, 29% 91%, 100% 87%, 91% 3%);
-  transition: all .5s;
-  
+  transition: all 0.5s;
+
+  h4 {
+    margin-bottom: 0;
+  }
+
   &:hover {
     background-color: darken($color: $accent-color, $amount: 5);
-    color: $light-text-color;
+    color: $text-color;
     clip-path: polygon(0% 5%, 17% 92%, 30% 90%, 100% 86%, 95% 2%);
   }
 }
@@ -97,6 +110,12 @@ main .container {
   background-color: $primary-color;
   margin: 1rem 0;
   border-radius: 10px;
+}
+
+.logout-button {
+  border: none;
+  background-color: transparent;
+  color: $light-text-color;
 }
 
 h3 {

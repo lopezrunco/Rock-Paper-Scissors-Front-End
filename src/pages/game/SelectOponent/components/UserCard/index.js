@@ -1,5 +1,6 @@
 import { useContext, useReducer } from "react"
 import { useNavigate } from "react-router-dom"
+import { PersonFill } from 'react-bootstrap-icons'
 
 import { AuthContext } from "../../../../../App"
 import { apiUrl } from "../../../../../utils/api-url"
@@ -95,7 +96,7 @@ function UserCard({ user }) {
 
     return (
         <div className="col-md-4">
-            <div className="user-card">
+            {/* <div className="user-card">
                 <h4 className="nickname">{user.nickname}</h4>
 
                 <button onClick={() => createGame(user.id)} disabled={state.isSending}>
@@ -105,7 +106,17 @@ function UserCard({ user }) {
                 {state.hasError && (
                     <span className="form-error">An error has occurred!</span>
                 )}
-            </div>
+            </div> */}
+
+                <button onClick={() => createGame(user.id)} disabled={state.isSending} className="user-card">
+                    <PersonFill />
+                    {state.isSending ? ("Please wait...") : <h4>{user.nickname}</h4>}
+                </button>
+
+                {state.hasError && (
+                    <span className="form-error">An error has occurred!</span>
+                )}
+
         </div>
     )
 }

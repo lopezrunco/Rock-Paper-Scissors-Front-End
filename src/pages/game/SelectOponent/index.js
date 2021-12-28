@@ -124,11 +124,7 @@ function SelectOponent() {
                     <div className="row">
                         <div className="col-12">
                             <PageTitle title="Select your opponent" subtitle="Begin" />
-                            <p>
-                                Once you choose your opponent, click on "Create game".
-                                <br />
-                                The opponent will recibe an invitation to play with you and do the first move of three rounds.
-                            </p>
+
                         </div>
 
                         <div className="col-12">

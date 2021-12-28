@@ -3,12 +3,16 @@ import { Routes, Route } from 'react-router-dom'
 
 import Forbidden from './pages/access/Forbidden'
 import NotFound from './pages/access/NotFound'
+import LoggedOut from './pages/access/LoggedOut'
 import Login from './pages/security/Login'
 import Register from './pages/security/Register'
 import WelcomeScreen from './pages/WelcomeScreen'
 import MultiPlayerStartScreen from './pages/MultiPlayerStartScreen'
 import SinglePlayerStartScreen from './pages/SinglePlayerStartScreen'
+import SinglePlay from './pages/game/SinglePlay'
 import SelectOponent from './pages/game/SelectOponent'
+import GameCreated from './pages/game/GameCreated'
+import OnPlayGames from './pages/game/OnPlayGames'
 
 import BackgroundShape from './components/BackgroundShape'
 import Nav from './components/Nav'
@@ -140,9 +144,13 @@ function App() {
         <NavigationScrollToTop />
 
         <Routes>
+          <Route path="/on-play" element={<OnPlayGames />} />
+          <Route path="/game-created" element={<GameCreated />} />
           <Route path="/select-oponent" element={<SelectOponent />} />
           <Route path="/multi-player-start-screen" element={<MultiPlayerStartScreen />} />
+          <Route path="/single-play" element={<SinglePlay />} />
           <Route path="/single-player-start-screen" element={<SinglePlayerStartScreen />} />
+          <Route path="/logged-out" element={<LoggedOut />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forbidden" element={<Forbidden />} />

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import PageTitle from "../../components/PageTitle"
+import { People } from 'react-bootstrap-icons'
 
 function MultiPlayerStartScreen() {
     return (
@@ -11,7 +12,7 @@ function MultiPlayerStartScreen() {
                         <p>
                             If you want to play with your friend, just press “Get Started” and you will be redirected to the next page. You will see a players list, select an oponent and press "Start". The game will begin when the other player will do the first move.
                         </p>
-                        <Link to="/login" className="primary-button">Get started</Link>
+                        <Link to="/login" className="primary-button"><People />Get started</Link>
                     </div>
                 </div>
             </div>
