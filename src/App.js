@@ -1,12 +1,13 @@
 import { createContext, useEffect, useReducer } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import WelcomeScreen from './pages/WelcomeScreen'
+import Forbidden from './pages/access/Forbidden'
 import NotFound from './pages/access/NotFound'
-import MultiPlayerStartScreen from './pages/MultiPlayerStartScreen'
-import SinglePlayerStartScreen from './pages/SinglePlayerStartScreen'
 import Login from './pages/security/Login'
 import Register from './pages/security/Register'
+import WelcomeScreen from './pages/WelcomeScreen'
+import MultiPlayerStartScreen from './pages/MultiPlayerStartScreen'
+import SinglePlayerStartScreen from './pages/SinglePlayerStartScreen'
 import SelectOponent from './pages/game/SelectOponent'
 
 import BackgroundShape from './components/BackgroundShape'
@@ -144,6 +145,7 @@ function App() {
           <Route path="/single-player-start-screen" element={<SinglePlayerStartScreen />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forbidden" element={<Forbidden />} />
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

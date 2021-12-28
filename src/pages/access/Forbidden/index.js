@@ -1,22 +1,20 @@
 import './style.scss'
-import notFoundImg from '../../../assets/img/404.png'
+import forbiddenImg from '../../../assets/img/403.png'
 
-function NotFound() {
+function Forbidden() {
     return (
         <div>
-            <main className="page-not-found">
+            <main className="forbidden">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-3 img-col">
-                            <img src={notFoundImg} alt='Page not found' />
+                            <img src={forbiddenImg} alt='Forbidden page' />
                         </div>
                         <div className="col-md-6 text-col">
-                            <h3>404!</h3>
-                            <h2>Oops! Nothing to do here!</h2>
+                            <h3>403!</h3>
+                            <h2>This is a forbidden page</h2>
                             <p>
-                                It seems that you are lost.<br />
-                                We couldn't find the page you're looking for.<br />
-                                Please, go back home and try again.
+                                Sorry, friend. This page has restricted access.
                             </p>
                             <a className="primary-button" href="/"><i class="fas fa-home"></i>Home</a>
                         </div>
@@ -27,4 +25,4 @@ function NotFound() {
     )
 }
 
-export default NotFound
+export default Forbidden
