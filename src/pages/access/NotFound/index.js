@@ -1,5 +1,6 @@
-import './style.scss'
+import { House } from 'react-bootstrap-icons'
 import notFoundImg from '../../../assets/img/404.png'
+import './style.scss'
 
 function NotFound() {
     return (
@@ -18,7 +19,7 @@ function NotFound() {
                                 We couldn't find the page you're looking for.<br />
                                 Please, go back home and try again.
                             </p>
-                            <a className="primary-button" href="/"><i class="fas fa-home"></i>Home</a>
+                            <a className="primary-button" href="/"><House />Home</a>
                         </div>
                     </div>
                 </div>
