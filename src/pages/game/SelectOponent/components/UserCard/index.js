@@ -59,7 +59,9 @@ function UserCard({ user }) {
             },
             body: JSON.stringify({
                 playerOneId: authState.user.id,
-                playerTwoId: userId
+                playerOneNickname: authState.user.nickname,
+                playerTwoId: userId,
+                playerTwoNickname: user.nickname
             })
         }).then(response => {
             if (response.ok) {
@@ -96,18 +98,6 @@ function UserCard({ user }) {
 
     return (
         <div className="col-md-4">
-            {/* <div className="user-card">
-                <h4 className="nickname">{user.nickname}</h4>
-
-                <button onClick={() => createGame(user.id)} disabled={state.isSending}>
-                    {state.isSending ? ("Please wait...") : ("Create game")}
-                </button>
-
-                {state.hasError && (
-                    <span className="form-error">An error has occurred!</span>
-                )}
-            </div> */}
-
                 <button onClick={() => createGame(user.id)} disabled={state.isSending} className="user-card">
                     <PersonFill />
                     {state.isSending ? ("Please wait...") : <h4>{user.nickname}</h4>}

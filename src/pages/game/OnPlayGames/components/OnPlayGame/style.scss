@@ -1,14 +1,24 @@
 @import "../../../../../Variables.scss";
 
-.move-img {
-  overflow: hidden;
-  max-width: 50px;
-  display: block;
-  margin-bottom: 0.5rem;
-}
+.onplay-game-wrapper {
 
-.primary-button {
-  position: relative;
-  top: -2rem;
-  right: -2rem;
+  .move-img {
+    overflow: hidden;
+    max-width: 50px;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .moves-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .primary-button {
+    position: relative;
+    top: -2rem;
+    right: -2rem;
+  }
 }

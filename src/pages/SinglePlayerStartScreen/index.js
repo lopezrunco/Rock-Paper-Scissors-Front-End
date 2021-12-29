@@ -12,7 +12,8 @@ const SinglePlayerStartScreen = () => {
                     <div className="col">
                         <PageTitle title="Practice the game" subtitle="Single player" />
                         <p>
-                            If you don’t have an opponent to play with you, don’t be upset. You can spend some time playing Rock Paper Scissors with a AI. Please click a “Get started” button and the game will play with you.
+                            If you don’t have an opponent to play with you, don’t be upset. You can spend some time playing Rock Paper Scissors with a super AI. <br />
+                            Please click a “Get started” button and the game will play with you.
                         </p>
                         <Link to="/single-play" className="primary-button"><Person />Get started</Link>
                     </div>

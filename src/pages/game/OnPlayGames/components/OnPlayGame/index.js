@@ -43,15 +43,18 @@ function OnPlayGame({ game }) {
     })
 
     return (
-        <div className="col-md-4">
+        <div className="col-md-4 onplay-game-wrapper">
             <div className='game-card--onplay'>
-                <small>Game id: {game.id}</small>
-                <p>Player 1: {game.playerOneId}</p>
-                <p>Player 2: {game.playerTwoId}</p>
-                <hr />
                 <div className="row">
-                    <div className="col-6"><p className='mb-3'>Player 1:</p>{movesPlayerOne}</div>
-                    <div className="col-6"><p className='mb-3'>Player 2:</p>{movesPlayerTwo}</div>
+                    {/* TODO: Mostrar la fecha de iniciado el juego */}
+                    <div className="col-6 moves-col">
+                        <h6 className='mb-4'>You</h6>
+                        {movesPlayerOne}
+                    </div>
+                    <div className="col-6 moves-col">
+                        <h6 className='mb-4'>{game.playerTwoNickname}</h6>
+                        {movesPlayerTwo}
+                    </div>
                 </div>
             </div>
             <Link to='/games/on-play/:id' className='primary-button'>Continue</Link>
