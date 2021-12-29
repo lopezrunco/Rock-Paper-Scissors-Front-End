@@ -10,7 +10,7 @@ import NavigationLink from '../NavigationLink'
 import './style.scss'
 
 function Nav() {
-    const { state: authState, dispatch } = useContext(AuthContext)
+    const { dispatch } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const logout = () => {
@@ -35,7 +35,7 @@ function Nav() {
                                     <NavigationLink to="/multi-player-start-screen"><People /><span>Multiplayer</span></NavigationLink>
                                 </li>
                                 <li>
-                                    <NavigationLink to="/on-play"><Joystick /><span>OnPlay</span></NavigationLink>
+                                    <NavigationLink to="/games/on-play"><Joystick /><span>OnPlay</span></NavigationLink>
                                 </li>
                             </ul>
                         </nav>

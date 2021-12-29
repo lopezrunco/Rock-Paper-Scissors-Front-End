@@ -15,13 +15,13 @@ function OnPlayGame({ game }) {
     game.playerOneMoves.forEach(element => {
         // Piedra
         if (element === 3) {
-            movesPlayerOne.push(<img className='move-img' src={rockImg} />)
+            movesPlayerOne.push(<img className='move-img' src={rockImg} alt='Rock' />)
             // Papel
         } else if (element === 2) {
-            movesPlayerOne.push(<img className='move-img' src={paperImg} />)
+            movesPlayerOne.push(<img className='move-img' src={paperImg} alt='Paper' />)
         } else if (element === 1) {
             // Tijera
-            movesPlayerOne.push(<img className='move-img' src={scissorsImg} />)
+            movesPlayerOne.push(<img className='move-img' src={scissorsImg} alt='Scissors' />)
         } else {
             movesPlayerOne.push(<h5>{element}</h5>)
         }
@@ -30,13 +30,13 @@ function OnPlayGame({ game }) {
     game.playerTwoMoves.forEach(element => {
         // Piedra
         if (element === 3) {
-            movesPlayerTwo.push(<img className='move-img' src={rockImg} />)
+            movesPlayerTwo.push(<img className='move-img' src={rockImg} alt='Rock' />)
             // Papel
         } else if (element === 2) {
-            movesPlayerTwo.push(<img className='move-img' src={paperImg} />)
+            movesPlayerTwo.push(<img className='move-img' src={paperImg} alt='Paper' />)
         } else if (element === 1) {
             // Tijera
-            movesPlayerTwo.push(<img className='move-img' src={scissorsImg} />)
+            movesPlayerTwo.push(<img className='move-img' src={scissorsImg} alt='Scissors' />)
         } else {
             movesPlayerTwo.push(<h5>{element}</h5>)
         }
@@ -57,7 +57,7 @@ function OnPlayGame({ game }) {
                     </div>
                 </div>
             </div>
-            <Link to='/games/on-play/:id' className='primary-button'>Continue</Link>
+            <Link to={`/games/play/${game.id}`} className='primary-button'>Continue</Link>
         </div>
     )
 }
