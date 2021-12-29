@@ -84,6 +84,28 @@ a:hover {
   }
 }
 
+.game-card {
+  padding: 2rem;
+  background-image: url("./assets/img/bg.png");
+  color: $text-color;
+  padding: 1rem 3rem;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(0% 0%, 5% 100%, 78% 97%, 100% 88%, 93% 0%);
+  transition: all 0.5s;
+
+  &--onplay {
+    @extend .game-card;
+    background-color: $accent-color;
+  }
+
+  &:hover {
+    background-color: darken($color: $accent-color, $amount: 5);
+    color: $text-color;
+    clip-path: polygon(2% 0%, 0% 100%, 77% 100%, 97% 93%, 100% 0%);
+  }
+}
+
 main .container {
   padding: 80px;
   transition: ease-in-out 0.25s;

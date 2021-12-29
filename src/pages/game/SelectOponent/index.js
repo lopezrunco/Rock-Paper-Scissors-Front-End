@@ -124,7 +124,6 @@ function SelectOponent() {
                     <div className="row">
                         <div className="col-12">
                             <PageTitle title="Select your opponent" subtitle="Begin" />
-
                         </div>
 
                         <div className="col-12">
