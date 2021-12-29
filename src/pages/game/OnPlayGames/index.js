@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react/cjs/react.development'
 
 import OnPlayGame from './components/OnPlayGame'
+import PageTitle from '../../../components/PageTitle'
 
 import { refreshToken } from '../../../utils/refresh-token'
 import { apiUrl } from '../../../utils/api-url'
@@ -11,7 +12,6 @@ import { HIDE_LOADER, SHOW_LOADER } from '../../../action-types'
 import { FETCH_ONPLAY_GAMES_FAILURE, FETCH_ONPLAY_GAMES_REQUEST, FETCH_ONPLAY_GAMES_SUCCESS } from './action-types'
 
 import './style.scss'
-import PageTitle from '../../../components/PageTitle'
 
 // Creacion de contexto para los onplay games
 export const OnPlayGamesContext = createContext()
