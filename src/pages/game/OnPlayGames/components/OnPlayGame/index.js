@@ -14,12 +14,12 @@ function OnPlayGame({ game }) {
     // Movimientos jugador 1
     game.playerOneMoves.forEach(element => {
         // Piedra
-        if (element === 3) {
+        if (element === 1) {
             movesPlayerOne.push(<img className='move-img' src={rockImg} alt='Rock' />)
             // Papel
         } else if (element === 2) {
             movesPlayerOne.push(<img className='move-img' src={paperImg} alt='Paper' />)
-        } else if (element === 1) {
+        } else if (element === 3) {
             // Tijera
             movesPlayerOne.push(<img className='move-img' src={scissorsImg} alt='Scissors' />)
         } else {
@@ -29,12 +29,12 @@ function OnPlayGame({ game }) {
     // Movimientos jugador 2
     game.playerTwoMoves.forEach(element => {
         // Piedra
-        if (element === 3) {
+        if (element === 1) {
             movesPlayerTwo.push(<img className='move-img' src={rockImg} alt='Rock' />)
             // Papel
         } else if (element === 2) {
             movesPlayerTwo.push(<img className='move-img' src={paperImg} alt='Paper' />)
-        } else if (element === 1) {
+        } else if (element === 3) {
             // Tijera
             movesPlayerTwo.push(<img className='move-img' src={scissorsImg} alt='Scissors' />)
         } else {

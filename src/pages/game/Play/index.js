@@ -1,25 +1,112 @@
-import { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useContext, useReducer, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 
-// Elementos del juego
-const choices = [
-    { "id": 1, "name": "rock", "losesTo": 2 },
-    { "id": 2, "name": "paper", "losesTo": 3 },
-    { "id": 3, "name": "scissors", "losesTo": 1 }
-]
+import { AuthContext } from "../../../App"
+import { apiUrl } from "../../../utils/api-url"
+import { refreshToken } from "../../../utils/refresh-token"
+import { EDIT_GAME_FAILURE, EDIT_GAME_REQUEST, EDIT_GAME_SUCCESS, FORM_INPUT_CHANGE } from './action-types'
+
+const initialState = {
+    choice: '',
+    isSending: false,
+    hasError: false
+}
+
+// Manejo del estado de la jugada
+const reducer = (state, action) => {
+    switch (action.type) {
+        case FORM_INPUT_CHANGE:
+            return {
+                ...state,
+                choice: Number(action.payload.value)
+            }
+        case EDIT_GAME_REQUEST:
+            return {
+                ...state,
+                isSending: true,
+                hasError: false
+            }
+        case EDIT_GAME_SUCCESS:
+            return {
+                ...state,
+                isSending: false,
+                choice: action.payload.choice
+            }
+        case EDIT_GAME_FAILURE:
+            return {
+                ...state,
+                isSending: false,
+                hasError: true
+            }
+        default:
+            return state
+    }
+}
 
 function Play() {
     const { id } = useParams()
-    const [userMove, setUserMove] = useState(null)
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const { state: authState, dispatch: authDispatch } = useContext(AuthContext)
+    const navigate = useNavigate()
 
-    function handleUserChoice(choice) {
-        const chosenChoise = choices.find(choiceItem => choiceItem.id === choice)
-        setUserMove(chosenChoise)
-
-        console.log(chosenChoise)
+    // Se invoca en el onChange de los inputs
+    const handleInputChange = (event) => {
+        // Emision de dispatch que toma los valores del evento del formulario
+        dispatch({
+            type: FORM_INPUT_CHANGE,
+            payload: {
+                input: event.target.name,
+                value: event.target.value
+            }
+        })
     }
 
-    // TODO: llamar al endpoint y enviar la eleccion
+    // Envia los datos a la API
+    const handleFormSubmit = () => {
+        dispatch({
+            type: EDIT_GAME_REQUEST
+        })
+
+        fetch(apiUrl(`games/play/${id}`), {
+            method: 'POST',
+            headers: {
+                'Authorization': authState.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                choice: state.choice
+            })
+        }).then(response => {
+            if (response.ok) {
+                return response.json()
+            } else {
+                throw response
+            }
+        }).then(data => {
+            dispatch({
+                type: EDIT_GAME_SUCCESS,
+                payload: data
+            })
+            navigate(`/games/result/${id}`)
+        }).catch(error => {
+            console.error('Error trying to edit the game', error)
+
+            if (error.status === 401) {
+                refreshToken(
+                    authState.refreshToken,
+                    authDispatch,
+                    navigate,
+                    () => handleFormSubmit()
+                )
+            } else if (error.status === 403) {
+                navigate('/forbidden')
+            } else {
+                dispatch({
+                    type: EDIT_GAME_FAILURE
+                })
+            }
+        })
+    }
 
     return (
         <main>
@@ -28,27 +115,56 @@ function Play() {
                     <div className='col-12'>
                         <p>Play game {id}</p>
                     </div>
-
                     <div className='col-12'>
-                        <div className="row">
-                            <div className="col-4">
-                                <button className="rock" onClick={() => handleUserChoice(1)}>
-                                    ROCK
-                                </button>
-                            </div>
-                            <div className="col-4">
-                                <button className="paper" onClick={() => handleUserChoice(2)}>
-                                    PAPER
-                                </button>
-                            </div>
-                            <div className="col-4">
-                                <button className="scissors" onClick={() => handleUserChoice(3)}>
-                                    SCISSORS
-                                </button>
-                            </div>
-                        </div>
-                    </div>
 
+                        <label htmlFor="rock">
+                            ROCK
+                            <input
+                                type="radio"
+                                value={1}
+                                onChange={handleInputChange}
+                                name="choice"
+                                id="rock"
+                            />
+                        </label>
+
+                        <label htmlFor="paper">
+                            PAPER
+                            <input
+                                type="radio"
+                                value={2}
+                                onChange={handleInputChange}
+                                name="choice"
+                                id="paper"
+                            />
+                        </label>
+
+                        <label htmlFor="scissors">
+                            SCISSORS
+                            <input
+                                type="radio"
+                                value={3}
+                                onChange={handleInputChange}
+                                name="choice"
+                                id="scissors"
+                            />
+                        </label>
+
+                        {/* Si se estan enviando datos al servidor, se deshabilita el boton y se muestra mensaje de espera */}
+                        <button onClick={handleFormSubmit} disabled={state.isSubmitting}>
+                            {state.isSubmitting ? (
+                                "Espere..."
+                            ) : (
+                                "Enviar"
+                            )}
+                        </button>
+
+                        {/* Si hay mensajes de error, se muestran */}
+                        {state.errorMessage && (
+                            <span className="form-error">{state.errorMessage}</span>
+                        )}
+
+                    </div>
                 </div>
             </div>
         </main>
