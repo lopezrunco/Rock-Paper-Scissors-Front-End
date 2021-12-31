@@ -1,5 +1,5 @@
-import { useContext, useReducer, useState } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useContext, useReducer } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 
 import rockImg from '../../../assets/img/rock.png'
 import paperImg from '../../../assets/img/paper.png'

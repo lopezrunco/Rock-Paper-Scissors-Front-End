@@ -14,6 +14,7 @@ import SelectOponent from './pages/game/SelectOponent'
 import GameCreated from './pages/game/GameCreated'
 import OnPlayGames from './pages/game/OnPlayGames'
 import Play from './pages/game/Play'
+import Result from './pages/game/Result'
 
 import BackgroundShape from './components/BackgroundShape'
 import Nav from './components/Nav'
@@ -145,6 +146,7 @@ function App() {
         <NavigationScrollToTop />
 
         <Routes>
+          <Route path="/games/result/:id" element={<Result />} />
           <Route path="/games/play/:id" element={<Play />} />
           <Route path="/games/on-play" element={<OnPlayGames />} />
           <Route path="/game-created" element={<GameCreated />} />
