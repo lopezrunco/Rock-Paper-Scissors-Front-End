@@ -107,6 +107,17 @@ a:hover {
   }
 }
 
+.message-card {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: $accent-color;
+  background-image: url("./assets/img/bg.png");
+  color: $light-text-color;
+  padding: 1rem 3rem;
+  clip-path: polygon(3% 9%, 9% 97%, 88% 90%, 99% 71%, 96% 7%);
+}
+
 main .container {
   padding: 80px;
   transition: ease-in-out 0.25s;

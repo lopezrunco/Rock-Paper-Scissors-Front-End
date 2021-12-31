@@ -1,0 +1,31 @@
+@import "../../../Variables.scss";
+
+.play {
+  .choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+
+    label {
+      img {
+        cursor: pointer;
+        width: 150px;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      input[type="radio"] {
+        display: none;
+      }
+    }
+  }
+  .buttons-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}

@@ -1,10 +1,17 @@
 import { useContext, useReducer, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
+import rockImg from '../../../assets/img/rock.png'
+import paperImg from '../../../assets/img/paper.png'
+import scissorsImg from '../../../assets/img/scissors.png'
 import { AuthContext } from "../../../App"
 import { apiUrl } from "../../../utils/api-url"
 import { refreshToken } from "../../../utils/refresh-token"
 import { EDIT_GAME_FAILURE, EDIT_GAME_REQUEST, EDIT_GAME_SUCCESS, FORM_INPUT_CHANGE } from './action-types'
+
+import PageTitle from "../../../components/PageTitle"
+import NavigationLink from "../../../components/NavigationLink"
+import './style.scss'
 
 const initialState = {
     choice: '',
@@ -109,60 +116,57 @@ function Play() {
     }
 
     return (
-        <main>
+        <main className="play">
             <div className='container'>
                 <div className='row'>
                     <div className='col-12'>
-                        <p>Play game {id}</p>
+                        <PageTitle title="Do your next move" subtitle="Continue the game" />
                     </div>
                     <div className='col-12'>
 
-                        <label htmlFor="rock">
-                            ROCK
-                            <input
-                                type="radio"
-                                value={1}
-                                onChange={handleInputChange}
-                                name="choice"
-                                id="rock"
-                            />
-                        </label>
+                        <div className="choices">
+                            <label htmlFor="rock">
+                                <img src={rockImg} />
+                                <input
+                                    type="radio"
+                                    value={1}
+                                    onChange={handleInputChange}
+                                    name="choice"
+                                    id="rock"
+                                />
+                            </label>
+                            <label htmlFor="paper">
+                                <img src={paperImg} />
+                                <input
+                                    type="radio"
+                                    value={2}
+                                    onChange={handleInputChange}
+                                    name="choice"
+                                    id="paper"
+                                />
+                            </label>
+                            <label htmlFor="scissors">
+                                <img src={scissorsImg} />
+                                <input
+                                    type="radio"
+                                    value={3}
+                                    onChange={handleInputChange}
+                                    name="choice"
+                                    id="scissors"
+                                />
+                            </label>
+                        </div>
 
-                        <label htmlFor="paper">
-                            PAPER
-                            <input
-                                type="radio"
-                                value={2}
-                                onChange={handleInputChange}
-                                name="choice"
-                                id="paper"
-                            />
-                        </label>
+                        <h6 className="message-card">{state.choice === 1 ? ("Rock") : state.choice === 2 ? ("Paper") : state.choice === 3 ? ("Scissors") : ("Nothing")} selected</h6>
+                        
+                        <div className="buttons-group">
+                            <NavigationLink to="/games/on-play" className="primary-button--faded">Cancel</NavigationLink>
+                            <button onClick={handleFormSubmit} disabled={state.isSubmitting} className="primary-button">
+                                {state.isSubmitting ? ("Please wait...") : ("Play!")}
+                            </button>
+                        </div>
 
-                        <label htmlFor="scissors">
-                            SCISSORS
-                            <input
-                                type="radio"
-                                value={3}
-                                onChange={handleInputChange}
-                                name="choice"
-                                id="scissors"
-                            />
-                        </label>
-
-                        {/* Si se estan enviando datos al servidor, se deshabilita el boton y se muestra mensaje de espera */}
-                        <button onClick={handleFormSubmit} disabled={state.isSubmitting}>
-                            {state.isSubmitting ? (
-                                "Espere..."
-                            ) : (
-                                "Enviar"
-                            )}
-                        </button>
-
-                        {/* Si hay mensajes de error, se muestran */}
-                        {state.errorMessage && (
-                            <span className="form-error">{state.errorMessage}</span>
-                        )}
+                        {state.errorMessage && (<span className="form-error">{state.errorMessage}</span>)}
 
                     </div>
                 </div>
