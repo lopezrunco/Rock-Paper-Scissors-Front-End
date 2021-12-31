@@ -93,7 +93,7 @@ function Result() {
                 })
             })
         }
-    }, [authDispatch, authState.token, authState.refreshToken, navigate])
+    }, [authDispatch, authState.token, authState.refreshToken, navigate, id])
 
     return (
         <main className="game-result">

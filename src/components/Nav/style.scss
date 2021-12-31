@@ -74,6 +74,21 @@ header {
         }
       }
     }
+
+    .logged-in-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      
+      a {
+        color: $light-text-color;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
   }
 }
 

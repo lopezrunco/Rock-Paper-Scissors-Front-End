@@ -1,0 +1,25 @@
+@import "../../../../../Variables.scss";
+
+.finished-game {
+  border: 1px solid #000;
+  overflow: hidden;
+  align-items: center;
+
+  h6 {
+    margin-bottom: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  hr {
+    margin: 0.9rem;
+  }
+}

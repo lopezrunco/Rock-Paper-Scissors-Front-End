@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom'
+import { TrophyFill } from 'react-bootstrap-icons'
 
 import rockImg from '../../../../../assets/img/rock.png'
 import paperImg from '../../../../../assets/img/paper.png'
 import scissorsImg from '../../../../../assets/img/scissors.png'
-
 import './style.scss'
 
-function OnPlayGame({ game }) {
-
+function FinishedGame({ game }) {
     // Generacion dinamica del historico de movimientos
     const movesPlayerOne = []
     const movesPlayerTwo = []
@@ -42,24 +40,58 @@ function OnPlayGame({ game }) {
         }
     })
 
+    // Define el ganador del juego retornando el id que se repite en el array de largo 3
+    let winner = ''
+    let winnerNickname = ''
+
+    if (game.movesWinners.length === 3) {
+        function findWinner() {
+            for (let findWinnerIndex = 0; findWinnerIndex < game.movesWinners.length; findWinnerIndex++) {
+                if (game.movesWinners[findWinnerIndex + 1] === game.movesWinners[findWinnerIndex]) {
+                    winner = game.movesWinners[findWinnerIndex]
+                }
+            }
+        }
+        findWinner()
+    }
+
+    function foundWinnerNickname() {
+        if (winner === game.playerOneId) {
+            winnerNickname = game.playerOneNickname
+        } else {
+            winnerNickname = game.playerTwoNickname
+        }
+    }
+    foundWinnerNickname()
+
     return (
-        <div className="col-md-4 onplay-game-wrapper">
-            <div className='game-card--onplay'>
-                <div className="row">
-                    {/* TODO: Mostrar la fecha de iniciado el juego */}
-                    <div className="col-6 moves-col">
-                        <h6 className='mb-4'>{game.playerOneNickname}</h6>
+        <div className='col-md-6'>
+            <div className='row finished-game game-card--played'>
+
+                {/* Jugador 1 */}
+                <div className='col-6'>
+                    <h6>{game.playerOneNickname}</h6>
+                </div>
+                <div className='col-6'>
+                    <div className='grid'>
                         {movesPlayerOne}
                     </div>
-                    <div className="col-6 moves-col">
-                        <h6 className='mb-4'>{game.playerTwoNickname}</h6>
+                </div>
+                <hr />
+                {/* Jugador 2 */}
+                <div className='col-6'>
+                    <h6>{game.playerTwoNickname}</h6>
+                </div>
+                <div className='col-6'>
+                    <div className='grid'>
                         {movesPlayerTwo}
                     </div>
                 </div>
+
             </div>
-            <Link to={`/games/play/${game.id}`} className='primary-button'>Continue</Link>
+            <span className='winner-card'><TrophyFill />{winnerNickname}</span>
         </div>
     )
 }
 
-export default OnPlayGame
+export default FinishedGame

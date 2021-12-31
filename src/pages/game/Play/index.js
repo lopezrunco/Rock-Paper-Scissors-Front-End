@@ -126,7 +126,7 @@ function Play() {
 
                         <div className="choices">
                             <label htmlFor="rock">
-                                <img src={rockImg} />
+                                <img src={rockImg} alt="Rock" />
                                 <input
                                     type="radio"
                                     value={1}
@@ -136,7 +136,7 @@ function Play() {
                                 />
                             </label>
                             <label htmlFor="paper">
-                                <img src={paperImg} />
+                                <img src={paperImg} alt="Paper" />
                                 <input
                                     type="radio"
                                     value={2}
@@ -146,7 +146,7 @@ function Play() {
                                 />
                             </label>
                             <label htmlFor="scissors">
-                                <img src={scissorsImg} />
+                                <img src={scissorsImg} alt="Scissors" />
                                 <input
                                     type="radio"
                                     value={3}
