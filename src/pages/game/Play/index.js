@@ -158,12 +158,14 @@ function Play() {
                         </div>
 
                         <h6 className="message-card">{state.choice === 1 ? ("Rock") : state.choice === 2 ? ("Paper") : state.choice === 3 ? ("Scissors") : ("Nothing")} selected</h6>
-                        
+
                         <div className="buttons-group">
                             <NavigationLink to="/games/on-play" className="primary-button--faded">Cancel</NavigationLink>
-                            <button onClick={handleFormSubmit} disabled={state.isSubmitting} className="primary-button">
-                                {state.isSubmitting ? ("Please wait...") : ("Play!")}
-                            </button>
+                            {state.choice && (
+                                <button onClick={handleFormSubmit} disabled={state.isSubmitting} className="primary-button">
+                                    {state.isSubmitting ? ("Please wait...") : ("Play!")}
+                                </button>
+                            )}
                         </div>
 
                         {state.errorMessage && (<span className="form-error">{state.errorMessage}</span>)}
