@@ -1,12 +1,15 @@
 import { useContext, useEffect, useReducer } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { HIDE_LOADER, SHOW_LOADER } from "../../../action-types"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { Joystick } from 'react-bootstrap-icons'
+
 import { AuthContext } from '../../../App'
 import PageTitle from "../../../components/PageTitle"
 import { apiUrl } from "../../../utils/api-url"
 import { refreshToken } from "../../../utils/refresh-token"
-
+import { HIDE_LOADER, SHOW_LOADER } from "../../../action-types"
 import { FETCH_GAME_RESULT_FAILURE, FETCH_GAME_RESULT_REQUEST, FETCH_GAME_RESULT_SUCCESS } from './action-types'
+
+import './style.scss'
 
 const initialState = {
     gameResult: '',
@@ -101,17 +104,26 @@ function Result() {
                 <div className="row">
                     <div className="col-12">
                         <PageTitle title="Game results:" subtitle="Played!" />
-                        <p>Game {state.gameResult.completed === true ? ("completed") : ("not completed")}</p>
                     </div>
 
-                    <div className="col-md-6">
-                        <p>Player 1: {state.gameResult.playerOneNickname}</p>
-                        <p>player 1 moves: {state.gameResult.playerOneMoves}</p>
+                    <div className="col-12">
+                        <div className="game-card--played">
+                            <div className="row">
+                                <div className="col-md-6 player-result">
+                                    <h6>{state.gameResult.playerOneNickname}</h6>
+                                    <p>{state.gameResult.playerOneMoves}</p>
+                                </div>
+                                <div className="col-md-6 player-result">
+                                    <h6>{state.gameResult.playerTwoNickname}</h6>
+                                    <p>{state.gameResult.playerTwoMoves}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="col-md-6">
-                        <p>Player 2: {state.gameResult.playerTwoNickname}</p>
-                        <p>player 2 moves: {state.gameResult.playerTwoMoves}</p>
+                    <div className="buttons-group">
+                        <span className="message-card">Game {state.gameResult.completed === true ? ("completed") : ("not completed")}</span>
+                        <Link className="primary-button" to={'/games/on-play'}><Joystick />Onplay games</Link>
                     </div>
                 </div>
             </div>

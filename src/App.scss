@@ -94,6 +94,11 @@ a:hover {
   clip-path: polygon(0% 0%, 5% 100%, 78% 97%, 100% 88%, 100% 0%);
   transition: all 0.5s;
 
+  h6,
+  p {
+    margin-bottom: 0
+  }
+
   &--onplay {
     @extend .game-card;
     padding: 2rem;
@@ -130,6 +135,10 @@ a:hover {
   color: $light-text-color;
   padding: 1rem 3rem;
   clip-path: polygon(3% 9%, 9% 97%, 88% 90%, 99% 71%, 96% 7%);
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .winner-card {
