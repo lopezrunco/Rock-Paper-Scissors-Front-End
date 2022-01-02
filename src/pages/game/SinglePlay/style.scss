@@ -1,0 +1,116 @@
+@import "../../../Variables.scss";
+
+.single-player-wrapper {
+  .container {
+    padding-top: 30px;
+
+    .message-card {
+      width: 100%;
+      padding: 2rem;
+
+      .wins-losses {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        .wins,
+        .losses {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    }
+
+    .choices {
+      .primary-button--freezed {
+        margin-bottom: 0;
+        transform: translateY(1rem);
+      }
+      .message-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 7rem;
+        margin: 0;
+
+        .rock,
+        .paper,
+        .scissors,
+        .player-two-choice {
+          img {
+            width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        .player-two-choice {
+          img {
+            cursor: initial;
+
+            &:hover {
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+
+    .game-state {
+      position: fixed;
+      width: 90%;
+      height: 90%;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      background-image: url("../../../assets/img/bg.png");
+      color: $text-color;
+      padding: 1rem 3rem;
+      margin: 1rem 0;
+      border: none;
+      cursor: pointer;
+      clip-path: polygon(9% 11%, 9% 82%, 30% 91%, 99% 89%, 99% 10%);
+
+      &.win {
+        background-color: $success-color;
+      }
+      &.lose {
+        background-color: $danger-color;
+      }
+      &.draw {
+        background-color: $warning-color;
+      }
+
+      .show-moves {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+
+        .move {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}
