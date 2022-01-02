@@ -33,6 +33,29 @@ a:hover {
   color: inherit;
 }
 
+.new-game-button {
+  display: inline-flex;
+  position: fixed;
+  bottom: 4rem;
+  right: 3rem;
+  align-items: center;
+  gap: 1rem;
+  background-color: $success-color;
+  background-image: url("./assets/img/bg.png");
+  color: $light-text-color;
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(0% 0%, 5% 100%, 87% 88%, 99% 90%, 94% 4%);
+  transition: all 0.5s;
+
+  &:hover {
+    background-color: darken($color: $success-color, $amount: 5);
+    color: $light-text-color;
+    clip-path: polygon(12% 2%, 1% 87%, 30% 83%, 88% 90%, 94% 4%);
+  }
+}
+
 .primary-button {
   display: inline-flex;
   align-items: center;
@@ -96,7 +119,7 @@ a:hover {
 
   h6,
   p {
-    margin-bottom: 0
+    margin-bottom: 0;
   }
 
   &--onplay {

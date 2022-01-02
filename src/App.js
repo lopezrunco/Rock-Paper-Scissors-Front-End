@@ -10,7 +10,7 @@ import WelcomeScreen from './pages/WelcomeScreen'
 import MultiPlayerStartScreen from './pages/MultiPlayerStartScreen'
 import SinglePlayerStartScreen from './pages/SinglePlayerStartScreen'
 import SinglePlay from './pages/game/SinglePlay'
-import SelectOponent from './pages/game/SelectOponent'
+import SelectOpponent from './pages/game/SelectOpponent'
 import GameCreated from './pages/game/GameCreated'
 import OnPlayGames from './pages/game/OnPlayGames'
 import Play from './pages/game/Play'
@@ -22,6 +22,7 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import NavigationScrollToTop from './components/NavigationScrollToTop'
 import Loader from './components/Loader'
+import NewGameButton from './components/NewGameButton'
 
 import { ENABLE_MFA, HIDE_LOADER, LOGIN, LOGOUT, REFRESH_TOKEN, SHOW_LOADER } from './action-types'
 
@@ -147,20 +148,31 @@ function App() {
         <NavigationScrollToTop />
 
         <Routes>
-          <Route path="/games/history" element={<History />} />
           <Route path="/games/result/:id" element={<Result />} />
           <Route path="/games/play/:id" element={<Play />} />
-          <Route path="/games/on-play" element={<OnPlayGames />} />
+
+          <Route path="/games/history" element={
+          <>
+            <History />
+            <NewGameButton />
+          </>} />
+
+          <Route path="/games/on-play" element={
+          <>
+            <OnPlayGames />
+            <NewGameButton />
+          </>} />
+
           <Route path="/game-created" element={<GameCreated />} />
-          <Route path="/select-oponent" element={<SelectOponent />} />
+          <Route path="/select-opponent" element={<SelectOpponent />} />
           <Route path="/multi-player-start-screen" element={<MultiPlayerStartScreen />} />
           <Route path="/single-play" element={<SinglePlay />} />
           <Route path="/single-player-start-screen" element={<SinglePlayerStartScreen />} />
           <Route path="/logged-out" element={<LoggedOut />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/forbidden" element={<Forbidden />} />
           <Route path="/" element={<WelcomeScreen />} />
+          <Route path="/forbidden" element={<Forbidden />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 

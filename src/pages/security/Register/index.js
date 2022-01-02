@@ -58,7 +58,7 @@ function Register() {
                 type: LOGIN,
                 payload: data
             })
-            navigate('/select-oponent')
+            navigate('/select-opponent')
         }).catch(error => {
             console.error(error)
             setData({

@@ -12,6 +12,7 @@ import { HIDE_LOADER, SHOW_LOADER } from '../../../action-types'
 import { FETCH_ONPLAY_GAMES_FAILURE, FETCH_ONPLAY_GAMES_REQUEST, FETCH_ONPLAY_GAMES_SUCCESS } from './action-types'
 
 import './style.scss'
+import NoGameItems from '../../../components/NoGameItems'
 
 // Creacion de contexto para los onplay games
 export const OnPlayGamesContext = createContext()
@@ -132,7 +133,7 @@ function OnPlayGames() {
                                             ))
                                         ) : (
                                             <div>
-                                                <p>No onplay games yet!</p>
+                                                <NoGameItems />
                                             </div>
                                         )}
                                     </>

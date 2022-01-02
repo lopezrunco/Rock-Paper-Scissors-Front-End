@@ -47,7 +47,7 @@ const reducer = (state, action) => {
     }
 }
 
-function SelectOponent() {
+function SelectOpponent() {
 
     const navigate = useNavigate()
 
@@ -123,7 +123,7 @@ function SelectOponent() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <PageTitle title="Select your opponent" subtitle="Begin" />
+                            <PageTitle title="Select your opponent" subtitle="Begin a new game" />
                         </div>
 
                         <div className="col-12">
@@ -157,4 +157,4 @@ function SelectOponent() {
     )
 }
 
-export default SelectOponent
+export default SelectOpponent

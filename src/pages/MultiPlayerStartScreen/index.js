@@ -1,8 +1,13 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
-import PageTitle from "../../components/PageTitle"
 import { People } from 'react-bootstrap-icons'
 
+import PageTitle from "../../components/PageTitle"
+import { AuthContext } from "../../App"
+
 function MultiPlayerStartScreen() {
+    const { state } = useContext(AuthContext)
+
     return (
         <main>
             <div className="container">
@@ -10,9 +15,17 @@ function MultiPlayerStartScreen() {
                     <div className="col">
                         <PageTitle title="Play against a friend" subtitle="Multiplayer" />
                         <p>
-                            If you want to play with your friend, just press “Get Started” and you will be redirected to the next page. You will see a players list, select an oponent and press "Start". The game will begin when the other player will do the first move.
+                            If you want to play with your friend, just press “Get Started” and you will be redirected to the next page. You will see a players list, select an oponent and press "Start".
                         </p>
-                        <Link to="/login" className="primary-button"><People />Get started</Link>
+
+                        {
+                            state.user ? (
+                                <Link to="/select-opponent" className="primary-button"><People />Select opponent</Link>
+                            ) : (
+                                <Link to="/login" className="primary-button"><People />Get started</Link>
+                            )
+                        }
+
                     </div>
                 </div>
             </div>

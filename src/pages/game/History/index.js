@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { HIDE_LOADER, SHOW_LOADER } from "../../../action-types"
 
 import { AuthContext } from '../../../App'
+import NoGameItems from "../../../components/NoGameItems"
 import PageTitle from "../../../components/PageTitle"
 import { apiUrl } from "../../../utils/api-url"
 import { refreshToken } from "../../../utils/refresh-token"
@@ -123,7 +124,7 @@ function History() {
                                             ))
                                         ) : (
                                             <div>
-                                                <p>No finished games yet!</p>
+                                                <NoGameItems />
                                             </div>
                                         )}
                                     </>
