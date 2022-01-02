@@ -1,9 +1,8 @@
 import { useContext, useEffect, useReducer } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { Joystick } from 'react-bootstrap-icons'
+import { Joystick, ClockHistory } from 'react-bootstrap-icons'
 
 import { AuthContext } from '../../../App'
-import PageTitle from "../../../components/PageTitle"
 import { apiUrl } from "../../../utils/api-url"
 import { refreshToken } from "../../../utils/refresh-token"
 import { HIDE_LOADER, SHOW_LOADER } from "../../../action-types"
@@ -98,36 +97,34 @@ function Result() {
         }
     }, [authDispatch, authState.token, authState.refreshToken, navigate, id])
 
+    let playerOne = state.gameResult.playerOneNickname
+    let playerTwo = state.gameResult.playerTwoNickname
+
     return (
         <main className="game-result">
             <div className="container">
                 <div className="row">
-                    <div className="col-12">
-                        <PageTitle title="Game results:" subtitle="Played!" />
-                    </div>
 
-                    <div className="col-12">
+                    <div className="col-md-8">
                         <div className="game-card--played">
-                            <div className="row">
-                                <div className="col-md-6 player-result">
-                                    <h6>{state.gameResult.playerOneNickname}</h6>
-                                    <p>{state.gameResult.playerOneMoves}</p>
-                                </div>
-                                <div className="col-md-6 player-result">
-                                    <h6>{state.gameResult.playerTwoNickname}</h6>
-                                    <p>{state.gameResult.playerTwoMoves}</p>
-                                </div>
-                            </div>
+                            <h3>Played!</h3>
+                            <div className="separator"></div>
+                            <h5>{state.gameResult.completed === false ? 
+                            (`Now you must wait to ${authState.user.id === state.gameResult.playerTwoId ? playerOne : playerTwo} do the next move`) : 
+                            (`The game is completed! Go to the history page to check the winner`)}</h5>
                         </div>
                     </div>
 
-                    <div className="buttons-group">
-                        <span className="message-card">Game {state.gameResult.completed === true ? ("completed") : ("not completed")}</span>
-                        <Link className="primary-button" to={'/games/on-play'}><Joystick />Onplay games</Link>
+                    <div className="col-md-4">
+                        <div className="buttons-group">
+                            <Link className="primary-button" to={'/games/on-play'}><Joystick />Onplay games</Link>
+                            <Link className="primary-button" to={'/games/history'}><ClockHistory />Games history</Link>
+                        </div>
                     </div>
+
                 </div>
             </div>
-        </main>
+        </main >
     )
 }
 

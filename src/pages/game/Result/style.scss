@@ -1,18 +1,25 @@
 @import "../../../Variables.scss";
 
 .game-result {
-  .player-result {
+  .game-card--played {
+    padding: 2rem;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .separator {
+      margin: 0 auto;
+    }
   }
-  span.message-card {
-    margin: 0;
-  }
+
   .buttons-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
   }
 }
