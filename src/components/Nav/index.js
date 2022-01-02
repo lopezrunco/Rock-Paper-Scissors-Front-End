@@ -33,12 +33,17 @@ function Nav() {
                                 <li>
                                     <NavigationLink to="/multi-player-start-screen"><People /><span>Multiplayer</span></NavigationLink>
                                 </li>
-                                <li>
-                                    <NavigationLink to="/games/on-play"><Joystick /><span>OnPlay</span></NavigationLink>
-                                </li>
-                                <li>
-                                    <NavigationLink to="/games/history"><ClockHistory /><span>History</span></NavigationLink>
-                                </li>
+
+                                {state.user && (
+                                    <>
+                                        <li>
+                                            <NavigationLink to="/games/on-play"><Joystick /><span>OnPlay</span></NavigationLink>
+                                        </li>
+                                        <li>
+                                            <NavigationLink to="/games/history"><ClockHistory /><span>History</span></NavigationLink>
+                                        </li>
+                                    </>
+                                )}
                             </ul>
                         </nav>
                         {state.user && (

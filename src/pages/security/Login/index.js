@@ -65,7 +65,7 @@ function Login() {
                 payload: data
             })
             // Luego de hacer el dispatch, navega a home
-            navigate('/select-opponent')
+            navigate('/')
         }).catch(error => {
             console.error(error)
             setData({

@@ -17,6 +17,7 @@ import Play from './pages/game/Play'
 import Result from './pages/game/Result'
 import History from './pages/game/History'
 
+import RequireAuth from './components/RequireAuth'
 import BackgroundShape from './components/BackgroundShape'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -148,32 +149,81 @@ function App() {
         <NavigationScrollToTop />
 
         <Routes>
-          <Route path="/games/result/:id" element={<Result />} />
-          <Route path="/games/play/:id" element={<Play />} />
 
           <Route path="/games/history" element={
-          <>
-            <History />
-            <NewGameButton />
-          </>} />
+            <RequireAuth>
+              <History />
+              <NewGameButton />
+            </RequireAuth>
+          } />
 
           <Route path="/games/on-play" element={
-          <>
-            <OnPlayGames />
-            <NewGameButton />
-          </>} />
+            <RequireAuth>
+              <OnPlayGames />
+              <NewGameButton />
+            </RequireAuth>
+          } />
 
-          <Route path="/game-created" element={<GameCreated />} />
-          <Route path="/select-opponent" element={<SelectOpponent />} />
-          <Route path="/multi-player-start-screen" element={<MultiPlayerStartScreen />} />
-          <Route path="/single-play" element={<SinglePlay />} />
-          <Route path="/single-player-start-screen" element={<SinglePlayerStartScreen />} />
-          <Route path="/logged-out" element={<LoggedOut />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/" element={<WelcomeScreen />} />
-          <Route path="/forbidden" element={<Forbidden />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/games/result/:id" element={
+            <RequireAuth>
+              <Result />
+            </RequireAuth>
+          } />
+
+          <Route path="/games/play/:id" element={
+            <RequireAuth>
+              <Play />
+            </RequireAuth>
+          } />
+
+          <Route path="/game-created" element={
+            <RequireAuth>
+              <GameCreated />
+            </RequireAuth>
+          } />
+
+          <Route path="/select-opponent" element={
+            <RequireAuth>
+              <SelectOpponent />
+            </RequireAuth>
+          } />
+
+          <Route path="/multi-player-start-screen" element={
+            <MultiPlayerStartScreen />
+          } />
+
+          <Route path="/single-play" element={
+            <SinglePlay />
+          } />
+
+          <Route path="/single-player-start-screen" element={
+            <SinglePlayerStartScreen />
+          } />
+
+          <Route path="/logged-out" element={
+            <LoggedOut />
+          } />
+
+          <Route path="/login" element={
+            <Login />
+          } />
+
+          <Route path="/register" element={
+            <Register />
+          } />
+
+          <Route path="/" element={
+            <WelcomeScreen />
+          } />
+
+          <Route path="/forbidden" element={
+            <Forbidden />
+          } />
+
+          <Route path="*" element={
+            <NotFound />
+          } />
+
         </Routes>
 
         <Footer />

@@ -11,6 +11,7 @@ import { FETCH_USERS_FAILURE, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS } from '.
 import { HIDE_LOADER, SHOW_LOADER } from '../../../action-types'
 
 import './style.scss'
+import NoOpponents from '../../../components/NoOpponents'
 
 // Creacion de contexto para los datos de usuarios
 export const UsersContext = createContext()
@@ -142,7 +143,7 @@ function SelectOpponent() {
                                             ))
                                         ) : (
                                             <div>
-                                                <p>No opponents yet!</p>
+                                                <NoOpponents/>
                                             </div>
                                         )}
                                     </>
