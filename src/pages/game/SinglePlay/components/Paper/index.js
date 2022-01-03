@@ -2,7 +2,7 @@ import paperImg from '../../../../../assets/img/paper.png'
 
 function Paper() {
     return (
-        <img src={paperImg} />
+        <img alt='paper' src={paperImg} />
     )
 }
 

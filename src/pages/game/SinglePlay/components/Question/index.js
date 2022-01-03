@@ -2,7 +2,7 @@ import questionImg from '../../../../../assets/img/question.png'
 
 function Question() {
     return (
-        <img src={questionImg} />
+        <img alt='question' src={questionImg} />
     )
 }
 

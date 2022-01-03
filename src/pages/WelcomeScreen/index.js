@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { People, Person } from 'react-bootstrap-icons'
+import { Person } from 'react-bootstrap-icons'
 import { Link } from 'react-router-dom'
 
 import { AuthContext } from '../../App'

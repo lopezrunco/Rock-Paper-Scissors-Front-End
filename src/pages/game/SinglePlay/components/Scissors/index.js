@@ -2,7 +2,7 @@ import scissorsImg from '../../../../../assets/img/scissors.png'
 
 function Scissors() {
     return (
-        <img src={scissorsImg} />
+        <img alt='scissors' src={scissorsImg} />
     )
 }
 
