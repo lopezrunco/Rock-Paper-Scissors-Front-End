@@ -49,7 +49,7 @@ function Nav() {
                         {state.user && (
                             <div className='logged-in-menu'>
 
-                                <NavigationLink to="/user/dahsboard">
+                                <NavigationLink to="/user/dashboard">
                                     <strong>{state.user.nickname}</strong>
                                 </NavigationLink>
                                 <button className='logout-button' onClick={logout}>

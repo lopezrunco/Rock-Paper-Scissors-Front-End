@@ -1,6 +1,6 @@
-@import "../../../Variables.scss";
+@import "../../Variables.scss";
 
-.forbidden {
+.single-player-start-screen {
   .img-col {
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@
     overflow: hidden;
 
     img {
-      max-width: 320px;
+      max-width: 200px;
     }
   }
 
@@ -19,16 +19,11 @@
     justify-content: center;
     align-items: flex-start;
     gap: 1rem;
-
-    h3 {
-      font-size: 7rem;
-      color: $secondary-color;
-    }
   }
 }
 
 @media screen and (max-width: 768px) {
-  .forbidden {
+  .single-player-start-screen {
     .text-col {
       gap: 20px;
       align-items: center;

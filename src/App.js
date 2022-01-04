@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Forbidden from './pages/access/Forbidden'
 import NotFound from './pages/access/NotFound'
 import LoggedOut from './pages/access/LoggedOut'
+import DashBoard from './pages/access/DashBoard'
 import Login from './pages/security/Login'
 import Register from './pages/security/Register'
 import WelcomeScreen from './pages/WelcomeScreen'
@@ -200,6 +201,12 @@ function App() {
             <SinglePlayerStartScreen />
           } />
 
+          <Route path="/user/dashboard" element={
+            <RequireAuth>
+              <DashBoard />
+            </RequireAuth>
+          } />
+
           <Route path="/logged-out" element={
             <LoggedOut />
           } />
@@ -213,7 +220,10 @@ function App() {
           } />
 
           <Route path="/" element={
-            <WelcomeScreen />
+            <>
+              <WelcomeScreen />
+              <Footer />
+            </>
           } />
 
           <Route path="/forbidden" element={
@@ -225,8 +235,6 @@ function App() {
           } />
 
         </Routes>
-
-        <Footer />
 
         {/* El loader se muestra si showingLoader es true */}
         {state.showingLoader && (

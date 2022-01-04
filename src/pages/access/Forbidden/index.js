@@ -1,5 +1,5 @@
-import './style.scss'
 import forbiddenImg from '../../../assets/img/403.png'
+import './style.scss'
 
 function Forbidden() {
     return (
