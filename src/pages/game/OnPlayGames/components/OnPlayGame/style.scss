@@ -1,21 +1,25 @@
 @import "../../../../../Variables.scss";
 
 .onplay-game-wrapper {
-
   .move-img {
     overflow: hidden;
     max-width: 50px;
     display: block;
     margin-bottom: 0.5rem;
   }
-  
+
   .moves-col {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    gap: 0.5rem;
+
+    img.question-img {
+      max-width: 50px;
+    }
   }
-  
+
   .primary-button {
     position: relative;
     top: -2rem;
