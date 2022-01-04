@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom'
 
+import { AuthContext } from '../../../../../App'
+import { useContext } from 'react'
+
 import rockImg from '../../../../../assets/img/rock.png'
 import paperImg from '../../../../../assets/img/paper.png'
 import scissorsImg from '../../../../../assets/img/scissors.png'
 import questionImg from '../../../../../assets/img/question.png'
-
 import './style.scss'
 
-
 function OnPlayGame({ game }) {
+    const { state: authState } = useContext(AuthContext)
 
     // Generacion dinamica del historico de movimientos
     const movesPlayerOne = []
@@ -51,11 +53,17 @@ function OnPlayGame({ game }) {
         movesPlayerOne.splice(-1, 1, questionImgTag)
     } else if (movesPlayerOne.length < movesPlayerTwo.length) { // Jugador 2 va delante del jugador 1
         movesPlayerTwo.splice(-1, 1, questionImgTag)
-    } else {
-        console.log('Largos iguales')
     }
 
-    console.log('arr', movesPlayerTwo)
+    // Dependiendo si el usuario logueado va delante en la jugada o no, habilita o deshabilita el boton de continuar
+    let allowContinueButton
+    if (movesPlayerOne.length < movesPlayerTwo.length && game.playerOneId === authState.user.id) {
+        allowContinueButton = true
+    } else if (movesPlayerOne.length > movesPlayerTwo.length && game.playerTwoId === authState.user.id) {
+        allowContinueButton = true
+    } else if (movesPlayerOne.length === movesPlayerTwo.length) {   // Si los dos van parejos, habilita a que cualquiera mueva
+        allowContinueButton = true
+    }
 
     return (
         <div className="col-md-4 onplay-game-wrapper">
@@ -72,7 +80,9 @@ function OnPlayGame({ game }) {
                     </div>
                 </div>
             </div>
-            <Link to={`/games/play/${game.id}`} className='primary-button'>Continue</Link>
+            {allowContinueButton && (
+                <Link to={`/games/play/${game.id}`} className='primary-button'>Continue</Link>
+            )}
         </div>
     )
 }
