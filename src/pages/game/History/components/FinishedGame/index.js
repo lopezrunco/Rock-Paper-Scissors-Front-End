@@ -40,7 +40,7 @@ function FinishedGame({ game }) {
         }
     })
 
-    // Define el ganador del juego retornando el id que se repite en el array de largo 3
+    // Define el ganador del juego retornando el id que se repite en el array
     let winner = ''
     let winnerNickname = ''
 
@@ -48,6 +48,8 @@ function FinishedGame({ game }) {
         function findWinner() {
             for (let findWinnerIndex = 0; findWinnerIndex < game.movesWinners.length; findWinnerIndex++) {
                 if (game.movesWinners[findWinnerIndex + 1] === game.movesWinners[findWinnerIndex]) {
+                    winner = game.movesWinners[findWinnerIndex]
+                } else {
                     winner = game.movesWinners[findWinnerIndex]
                 }
             }
@@ -58,8 +60,10 @@ function FinishedGame({ game }) {
     function foundWinnerNickname() {
         if (winner === game.playerOneId) {
             winnerNickname = game.playerOneNickname
-        } else {
+        } else if (winner === game.playerTwoId) {
             winnerNickname = game.playerTwoNickname
+        } else if (winner === 0) {
+            winnerNickname = 'Draw!'
         }
     }
     foundWinnerNickname()
