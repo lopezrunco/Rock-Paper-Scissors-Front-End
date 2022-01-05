@@ -40,26 +40,47 @@ function FinishedGame({ game }) {
         }
     })
 
-    // Define el ganador del juego retornando el id que se repite en el array de largo 3
-    let winner = ''
+    // Definir el ganador del juego retornando el id que se repite en el array de largo 3
+    const winner = []
     let winnerNickname = ''
 
     if (game.movesWinners.length === 3) {
-        function findWinner() {
-            for (let findWinnerIndex = 0; findWinnerIndex < game.movesWinners.length; findWinnerIndex++) {
-                if (game.movesWinners[findWinnerIndex + 1] === game.movesWinners[findWinnerIndex]) {
-                    winner = game.movesWinners[findWinnerIndex]
+        function findArrayDuplicates(array) {
+            const count = {}
+
+            array.forEach(item => {
+                if (count[item]) {
+                    count[item] += 1
+                    return
+                }
+                count[item] = 1
+            })
+
+            for (let prop in count) {
+                if (count[prop] >= 2) {
+                    winner.push(prop)
                 }
             }
+
+            console.log('count', count)
+
+            return winner
         }
-        findWinner()
+        findArrayDuplicates(game.movesWinners)
     }
 
+    // console.log('winner ------------------------', winner)
+
+    // Compara el id ganador con el id de los jugadores, determinando el ganador
     function foundWinnerNickname() {
-        if (winner === game.playerOneId) {
+        if (winner[0] === game.playerOneId) {
             winnerNickname = game.playerOneNickname
-        } else {
+        } else if (winner[0] === game.playerTwoId) {
             winnerNickname = game.playerTwoNickname
+        } else if (winner[0] === '0') {
+            winnerNickname = 'Draw!'
+        } else {
+            winnerNickname = 'Draw!'
         }
     }
     foundWinnerNickname()
