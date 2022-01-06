@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { ExclamationCircle } from 'react-bootstrap-icons'
+
 import { LOGIN } from '../../../action-types'
 import { AuthContext } from '../../../App'
 import { apiUrl } from '../../../utils/api-url'
@@ -71,7 +73,7 @@ function Login() {
             setData({
                 ...data,
                 isSubmitting: false,
-                errorMessage: 'Invalid credentials'
+                errorMessage: 'Invalid credentials. Please check and try again.'
             })
         })
     }
@@ -125,13 +127,15 @@ function Login() {
                             {data.isSubmitting ? ("Please wait...") : ("Login")}
                         </button>
 
-                        {/* Si hay mensajes de error se muestram */}
                         {data.errorMessage && (
-                            <span className='form-error'>{data.errorMessage}</span>
+                            <span className='error-message'>
+                                <ExclamationCircle />
+                                {data.errorMessage}
+                            </span>
                         )}
 
                     </div>
-                    
+
                     <div className='links'>
                         <small>Don't yo have an account yet? <Link to="/register">Register</Link></small>
                         <small><Link to="/">Back to landing</Link></small>

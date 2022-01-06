@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 import { People } from 'react-bootstrap-icons'
 
 import { AuthContext } from "../../App"
-import PageTitle from "../../components/PageTitle"
 import multiPlayerImg from '../../assets/img/multi-player.png'
+import PageTitle from "../../components/PageTitle"
 import './style.scss'
 
 function MultiPlayerStartScreen() {

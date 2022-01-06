@@ -1,14 +1,15 @@
 import { createContext, useContext, useEffect, useReducer } from "react"
 import { useNavigate } from "react-router-dom"
-import { HIDE_LOADER, SHOW_LOADER } from "../../../action-types"
 
-import { AuthContext } from '../../../App'
-import NoGameItems from "../../../components/NoGameItems"
-import PageTitle from "../../../components/PageTitle"
 import { apiUrl } from "../../../utils/api-url"
 import { refreshToken } from "../../../utils/refresh-token"
+import { HIDE_LOADER, SHOW_LOADER } from "../../../action-types"
 import { FETCH_HISTORY_GAMES_FAILURE, FETCH_HISTORY_GAMES_REQUEST, FETCH_HISTORY_GAMES_SUCCESS } from './action-types'
+
 import FinishedGame from "./components/FinishedGame"
+import NoGameItems from "../../../components/NoGameItems"
+import PageTitle from "../../../components/PageTitle"
+import { AuthContext } from '../../../App'
 
 // Creacion de contexto para el historico de juegos
 export const HistoryGamesContext = createContext()

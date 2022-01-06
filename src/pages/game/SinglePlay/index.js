@@ -4,7 +4,6 @@ import Scissors from './components/Scissors'
 import Rock from './components/Rock'
 import Paper from './components/Paper'
 import Question from './components/Question'
-
 import './style.scss'
 
 // Elementos del juego

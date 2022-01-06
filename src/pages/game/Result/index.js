@@ -7,7 +7,6 @@ import { apiUrl } from "../../../utils/api-url"
 import { refreshToken } from "../../../utils/refresh-token"
 import { HIDE_LOADER, SHOW_LOADER } from "../../../action-types"
 import { FETCH_GAME_RESULT_FAILURE, FETCH_GAME_RESULT_REQUEST, FETCH_GAME_RESULT_SUCCESS } from './action-types'
-
 import './style.scss'
 
 const initialState = {

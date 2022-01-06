@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
+import { ExclamationCircle } from 'react-bootstrap-icons'
 import { useNavigate, Link } from "react-router-dom"
+
 import { LOGIN } from '../../../action-types'
 import { AuthContext } from '../../../App'
 import { apiUrl } from '../../../utils/api-url'
@@ -64,7 +66,7 @@ function Register() {
             setData({
                 ...data,
                 isSubmitting: false,
-                errorMessage: 'Invalid credentials'
+                errorMessage: 'Error creating your account. Please try other credentials.'
             })
         })
     }
@@ -118,9 +120,11 @@ function Register() {
                             {data.isSubmitting ? ("Please wait...") : ("Register")}
                         </button>
 
-                        {/* Si hay mensajes de error se muestram */}
                         {data.errorMessage && (
-                            <span className='form-error'>{data.errorMessage}</span>
+                            <span className='error-message'>
+                                <ExclamationCircle />
+                                {data.errorMessage}
+                            </span>
                         )}
 
                     </div>

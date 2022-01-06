@@ -1,17 +1,16 @@
 import { createContext, useContext, useEffect, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import PageTitle from '../../../components/PageTitle'
-import UserCard from './components/UserCard'
-
 import { refreshToken } from '../../../utils/refresh-token'
 import { apiUrl } from '../../../utils/api-url'
 import { AuthContext } from '../../../App'
 import { FETCH_USERS_FAILURE, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS } from './action-types'
 import { HIDE_LOADER, SHOW_LOADER } from '../../../action-types'
 
-import './style.scss'
 import NoOpponents from '../../../components/NoOpponents'
+import PageTitle from '../../../components/PageTitle'
+import UserCard from './components/UserCard'
+import './style.scss'
 
 // Creacion de contexto para los datos de usuarios
 export const UsersContext = createContext()

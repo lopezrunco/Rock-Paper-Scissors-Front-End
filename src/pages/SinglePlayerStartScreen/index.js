@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { Person } from 'react-bootstrap-icons'
 
-import PageTitle from '../../components/PageTitle'
 import singlePlayerImg from '../../assets/img/single-player.png'
+import PageTitle from '../../components/PageTitle'
 import './style.scss'
 
 const SinglePlayerStartScreen = () => {

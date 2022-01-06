@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import { Joystick } from 'react-bootstrap-icons'
 
-import PageTitle from "../../../components/PageTitle"
 import gameCreatedPlayerImg from '../../../assets/img/game-created.png'
+import PageTitle from "../../../components/PageTitle"
 import './style.scss'
 
 function GameCreated() {

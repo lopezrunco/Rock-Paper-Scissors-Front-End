@@ -1,4 +1,5 @@
 import { House } from 'react-bootstrap-icons'
+
 import notFoundImg from '../../../assets/img/404.png'
 import './style.scss'
 

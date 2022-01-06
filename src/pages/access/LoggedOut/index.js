@@ -1,6 +1,7 @@
-import './style.scss'
-import notFoundImg from '../../../assets/img/logged-out.png'
 import { Person, House } from 'react-bootstrap-icons'
+
+import notFoundImg from '../../../assets/img/logged-out.png'
+import './style.scss'
 
 function LoggedOut() {
     return (
