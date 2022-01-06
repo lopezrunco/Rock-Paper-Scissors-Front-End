@@ -1,0 +1,38 @@
+@import "../../../Variables.scss";
+
+.dashboard {
+  .info-card {
+    background-color: #e5e3cc;
+    background-image: url("../../../assets/img/bg.png");
+    color: $text-color;
+    margin-bottom: 2rem;
+    padding: 2rem 4rem;
+    border: none;
+    clip-path: polygon(3% 0%, 1% 100%, 9% 95%, 97% 95%, 99% 0%);
+
+    .enable-mfa-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .instructions {
+      margin: 1rem 0;
+      display: block;
+    }
+
+    .enable-mfa-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 7rem;
+    }
+
+    .secret-key {
+      margin-top: 1rem;
+      font-weight: 700;
+    }
+  }
+}
