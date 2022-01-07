@@ -10,7 +10,9 @@ function Footer() {
                             <small>© Rock Paper Scissors</small>
                         </div>
                         <div className="site-info">
-                            <small>A+ Full Stack Developer | <a href="https://github.com/lopezrunco/Rock-Paper-Scissors-Front-End" target="_blank" rel="noreferrer">Github repo</a></small>
+                            <small>
+                                A+ Full Stack Developer | <a href="https://github.com/lopezrunco/Rock-Paper-Scissors-Front-End" target="_blank" rel="noreferrer">Front End</a> | <a href="https://github.com/lopezrunco/Rock-Paper-Scissors-Api" target="_blank" rel="noreferrer">Back End</a>
+                            </small>
                         </div>
                     </div>
                 </div>

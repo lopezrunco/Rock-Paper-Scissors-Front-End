@@ -124,7 +124,7 @@ function Play() {
                     </div>
                     <div className='col-12'>
 
-                        <div className="choices">
+                        <div className="choices message-card">
                             <label htmlFor="rock">
                                 <img src={rockImg} alt="Rock" />
                                 <input

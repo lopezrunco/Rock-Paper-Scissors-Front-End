@@ -31,9 +31,7 @@ function WelcomeScreen() {
                                     If you choose Paper, you will win against Rock but lose against Scissors.<br />
                                     There are 3 rounds. The game ends when somebody gets 2 wins.
                                 </p>
-
-                                {
-                                    !state.user && (<Link to="/login" className="primary-button"><Person />Login</Link>)}
+                                {!state.user && (<Link to="/login" className="primary-button"><Person />Login</Link>)}
                             </div>
                         </div>
                     </div>
