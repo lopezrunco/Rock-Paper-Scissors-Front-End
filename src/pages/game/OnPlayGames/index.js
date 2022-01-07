@@ -1,6 +1,7 @@
-import { createContext, useEffect, useReducer } from 'react'
+import { createContext, useEffect, useReducer, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react/cjs/react.development'
+import { ChevronLeft, ChevronRight } from 'react-bootstrap-icons'
 
 import { refreshToken } from '../../../utils/refresh-token'
 import { apiUrl } from '../../../utils/api-url'
@@ -11,7 +12,6 @@ import { FETCH_ONPLAY_GAMES_FAILURE, FETCH_ONPLAY_GAMES_REQUEST, FETCH_ONPLAY_GA
 import OnPlayGame from './components/OnPlayGame'
 import PageTitle from '../../../components/PageTitle'
 import NoGameItems from '../../../components/NoGameItems'
-import './style.scss'
 
 // Creacion de contexto para los onplay games
 export const OnPlayGamesContext = createContext()
@@ -54,6 +54,17 @@ function OnPlayGames() {
     const { state: authState, dispatch: authDispatch } = useContext(AuthContext)
     const [state, dispatch] = useReducer(reducer, initialState)
 
+    // Manejo de paginacion
+    const [currentPage, setCurentPage] = useState(1)
+    const itemsPerPage = 9
+
+    function prevPage() {
+        setCurentPage(currentPage - 1)
+    }
+    function nextPage() {
+        setCurentPage(currentPage + 1)
+    }
+
     // Cuando se carga el componente obtiene los juegos y los muestra
     useEffect(() => {
         // Si tiene token se hace la peticion
@@ -67,7 +78,7 @@ function OnPlayGames() {
             })
 
             // Peticion de los onplay games
-            fetch(apiUrl('games/on-play'), {
+            fetch(apiUrl(`games/on-play?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
                 headers: {
                     'Authorization': authState.token,
                     'Content-Type': 'application/json'
@@ -106,7 +117,7 @@ function OnPlayGames() {
                 })
             })
         }
-    }, [authDispatch, authState.token, authState.refreshToken, navigate])
+    }, [authDispatch, authState.token, authState.refreshToken, navigate, currentPage])
 
     return (
         <OnPlayGamesContext.Provider value={{ state, dispatch }}>
@@ -131,14 +142,24 @@ function OnPlayGames() {
                                                 <OnPlayGame key={game.id} game={game} />
                                             ))
                                         ) : (
-                                            <div>
-                                                <NoGameItems />
-                                            </div>
+                                            <div><NoGameItems /></div>
                                         )}
                                     </>
                                 )}
                             </div>
                         </div>
+
+                        <div className='col-12'>
+                            <div className='pagination'>
+                                {currentPage > 1 && (
+                                    <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
+                                )}
+                                {currentPage < state.games.length && (
+                                    <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
+                                )}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </main>

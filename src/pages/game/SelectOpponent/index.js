@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useReducer } from 'react'
+import { createContext, useContext, useEffect, useReducer, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ChevronLeft, ChevronRight } from 'react-bootstrap-icons'
 
 import { refreshToken } from '../../../utils/refresh-token'
 import { apiUrl } from '../../../utils/api-url'
@@ -10,7 +11,6 @@ import { HIDE_LOADER, SHOW_LOADER } from '../../../action-types'
 import NoOpponents from '../../../components/NoOpponents'
 import PageTitle from '../../../components/PageTitle'
 import UserCard from './components/UserCard'
-import './style.scss'
 
 // Creacion de contexto para los datos de usuarios
 export const UsersContext = createContext()
@@ -59,6 +59,17 @@ function SelectOpponent() {
     // Deja disponible el estado para usarlo en el componente para mostrar los usuarios
     const [state, dispatch] = useReducer(reducer, initialState)
 
+    // Manejo de paginacion
+    const [currentPage, setCurentPage] = useState(1)
+    const itemsPerPage = 9
+
+    function prevPage() {
+        setCurentPage(currentPage - 1)
+    }
+    function nextPage() {
+        setCurentPage(currentPage + 1)
+    }
+
     // Cuando se carga el componente obtiene los usuarios y los muestra (o al menos la 1er pagina)
     useEffect(() => {
         // Si tiene token se hace la peticion de usuarios
@@ -72,7 +83,7 @@ function SelectOpponent() {
             })
 
             // Peticion de la lista de usuarios
-            fetch(apiUrl('users'), {
+            fetch(apiUrl(`users?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
                 headers: {
                     'Authorization': authState.token,   // Importante pasar el token
                     'Content-Type': 'application/json'
@@ -113,7 +124,7 @@ function SelectOpponent() {
                 })
             })
         }
-    }, [authDispatch, authState.token, authState.refreshToken, navigate])
+    }, [authDispatch, authState.token, authState.refreshToken, navigate, currentPage])
 
     return (
         // Todos los elementos que se renderizan aqui tienen acceso al contexto de usuarios,
@@ -141,11 +152,20 @@ function SelectOpponent() {
                                                 <UserCard key={user.id} user={user} />
                                             ))
                                         ) : (
-                                            <div>
-                                                <NoOpponents/>
-                                            </div>
+                                            <div><NoOpponents /></div>
                                         )}
                                     </>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className='col-12'>
+                            <div className='pagination'>
+                                {currentPage > 1 && (
+                                    <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
+                                )}
+                                {currentPage < state.users.length && (
+                                    <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
                                 )}
                             </div>
                         </div>

@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useReducer } from "react"
+import { createContext, useContext, useEffect, useReducer, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { ChevronLeft, ChevronRight } from 'react-bootstrap-icons'
 
 import { apiUrl } from "../../../utils/api-url"
 import { refreshToken } from "../../../utils/refresh-token"
@@ -52,6 +53,17 @@ function History() {
     const { state: authState, dispatch: authDispatch } = useContext(AuthContext)
     const [state, dispatch] = useReducer(reducer, initialState)
 
+    // Manejo de paginacion
+    const [currentPage, setCurentPage] = useState(1)
+    const itemsPerPage = 9
+
+    function prevPage() {
+        setCurentPage(currentPage - 1)
+    }
+    function nextPage() {
+        setCurentPage(currentPage + 1)
+    }
+
     useEffect(() => {
         if (authState.token) {
             authDispatch({
@@ -61,7 +73,7 @@ function History() {
                 type: FETCH_HISTORY_GAMES_REQUEST
             })
 
-            fetch(apiUrl('games/history'), {
+            fetch(apiUrl(`games/history?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
                 headers: {
                     'Authorization': authState.token,
                     'Content-Type': 'application/json'
@@ -99,7 +111,7 @@ function History() {
                 })
             })
         }
-    }, [authDispatch, authState.token, authState.refreshToken, navigate])
+    }, [authDispatch, authState.token, authState.refreshToken, navigate, currentPage])
 
     return (
         <HistoryGamesContext.Provider value={{ state, dispatch }}>
@@ -124,14 +136,24 @@ function History() {
                                                 <FinishedGame key={game.id} game={game} />
                                             ))
                                         ) : (
-                                            <div>
-                                                <NoGameItems />
-                                            </div>
+                                            <div><NoGameItems /></div>
                                         )}
                                     </>
                                 )}
                             </div>
                         </div>
+
+                        <div className='col-12'>
+                            <div className='pagination'>
+                                {currentPage > 1 && (
+                                    <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
+                                )}
+                                {currentPage < state.historyGames.length && (
+                                    <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
+                                )}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </main>

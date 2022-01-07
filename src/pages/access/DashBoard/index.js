@@ -144,7 +144,7 @@ function DashBoard() {
                                 {
                                     state.mfa &&
                                     <div className='qr-container'>
-                                        <img className='qr-img' src={state.mfa.qr} />
+                                        <img className='qr-img' alt='mfa-qr' src={state.mfa.qr} />
                                         <small className='instructions'>
                                             Scan the image above into a MFA app (e.g. Google Authenticator) <br />
                                             Next time you login, we will ask for an acces token generated with the app.
