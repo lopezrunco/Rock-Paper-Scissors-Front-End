@@ -11,6 +11,7 @@ import FinishedGame from "./components/FinishedGame"
 import NoGameItems from "../../../components/NoGameItems"
 import PageTitle from "../../../components/PageTitle"
 import { AuthContext } from '../../../App'
+import Loader from "../../../components/Loader"
 
 // Creacion de contexto para el historico de juegos
 export const HistoryGamesContext = createContext()
@@ -125,7 +126,7 @@ function History() {
                         <div className="col-12">
                             <div className="row games-history-container mt-5">
                                 {state.isFetching ? (
-                                    <p>Loading...</p>
+                                    <Loader />
                                 ) : state.hasError ? (
                                     <span>An error ocurred</span>
                                 ) : (

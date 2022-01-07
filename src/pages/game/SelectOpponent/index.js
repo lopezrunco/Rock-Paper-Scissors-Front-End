@@ -11,6 +11,7 @@ import { HIDE_LOADER, SHOW_LOADER } from '../../../action-types'
 import NoOpponents from '../../../components/NoOpponents'
 import PageTitle from '../../../components/PageTitle'
 import UserCard from './components/UserCard'
+import Loader from '../../../components/Loader'
 
 // Creacion de contexto para los datos de usuarios
 export const UsersContext = createContext()
@@ -140,7 +141,7 @@ function SelectOpponent() {
                         <div className="col-12">
                             <div className='row users-container mt-5'>
                                 {state.isFetching ? (
-                                    <p>Loading...</p>
+                                    <Loader />
                                 ) : state.hasError ? (
                                     <span>An error ocurred</span>
                                 ) : (

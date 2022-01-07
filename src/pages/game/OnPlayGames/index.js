@@ -12,6 +12,7 @@ import { FETCH_ONPLAY_GAMES_FAILURE, FETCH_ONPLAY_GAMES_REQUEST, FETCH_ONPLAY_GA
 import OnPlayGame from './components/OnPlayGame'
 import PageTitle from '../../../components/PageTitle'
 import NoGameItems from '../../../components/NoGameItems'
+import Loader from '../../../components/Loader'
 
 // Creacion de contexto para los onplay games
 export const OnPlayGamesContext = createContext()
@@ -131,7 +132,7 @@ function OnPlayGames() {
                         <div className="col-12">
                             <div className='row on-play-games-container mt-5'>
                                 {state.isFetching ? (
-                                    <p>Loading...</p>
+                                    <Loader />
                                 ) : state.hasError ? (
                                     <span>An error ocurred</span>
                                 ) : (
