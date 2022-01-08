@@ -15,12 +15,24 @@
       }
 
       h1 {
-          font-weight: 900;
+        font-weight: 900;
       }
 
       .separator {
         margin: 0 auto;
         margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .welcome-screen {
+    .container {
+      .intro {
+        img {
+          display: none;
+        }
       }
     }
   }

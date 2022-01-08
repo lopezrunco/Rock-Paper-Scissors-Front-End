@@ -27,8 +27,11 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 998px) {
   .forbidden {
+    .img-col {
+      display: none;
+    }
     .text-col {
       gap: 20px;
       align-items: center;

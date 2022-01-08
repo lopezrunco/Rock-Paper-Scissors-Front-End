@@ -66,7 +66,7 @@ function OnPlayGame({ game }) {
     }
 
     return (
-        <div className="col-md-4 onplay-game-wrapper">
+        <div className="col-12 col-md-6 col-lg-4 onplay-game-wrapper">
             <div className='game-card--onplay'>
                 <div className="row">
                     {/* TODO: Mostrar la fecha de iniciado el juego */}

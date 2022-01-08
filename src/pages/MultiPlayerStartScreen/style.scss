@@ -9,7 +9,7 @@
     overflow: hidden;
 
     img {
-      max-width: 400px;
+      max-width: 300px;
     }
   }
 
@@ -22,12 +22,18 @@
   }
 }
 
+@media screen and (max-width: 992px) {
+  .multi-player-start-screen {
+    .img-col {
+      display: none;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .multi-player-start-screen {
     .text-col {
       gap: 20px;
-      align-items: center;
-      text-align: center;
     }
   }
 }

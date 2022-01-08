@@ -36,3 +36,30 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  .dashboard {
+    .container {
+      padding: 50px 20px;
+
+      .info-card {
+        .enable-mfa-info {
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard {
+    .info-card {
+      background-color: transparent;
+      background-image: none;
+      padding: 0;
+      clip-path: none;
+    }
+  }
+}

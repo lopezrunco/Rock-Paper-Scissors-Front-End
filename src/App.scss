@@ -62,8 +62,8 @@ a:hover {
 .new-game-button {
   display: inline-flex;
   position: fixed;
-  bottom: 3rem;
-  right: 3rem;
+  bottom: 1rem;
+  right: 1rem;
   align-items: center;
   gap: 1rem;
   background-color: $success-color;
@@ -79,6 +79,14 @@ a:hover {
     background-color: darken($color: $success-color, $amount: 5);
     color: $light-text-color;
     clip-path: polygon(12% 2%, 1% 87%, 30% 83%, 88% 90%, 94% 4%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .new-game-button {
+    span {
+      display: none;
+    }
   }
 }
 

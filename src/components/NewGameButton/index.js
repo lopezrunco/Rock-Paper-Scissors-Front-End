@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function NewGameButton() {
     return (
-        <Link to={'/select-opponent'} className='new-game-button'><Plus /> New game</Link>
+        <Link to={'/select-opponent'} className='new-game-button'><Plus /><span> New game</span></Link>
     )
 }
 
