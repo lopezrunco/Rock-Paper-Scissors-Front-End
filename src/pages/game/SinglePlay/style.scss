@@ -114,3 +114,76 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .single-player-wrapper {
+    .container {
+      .choices {
+        .message-card {
+          padding: 2rem 5rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .single-player-wrapper {
+    .container {
+      .choices {
+        .random-choices {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .single-player-wrapper {
+    .container {
+      .game-state {
+        width: 100%;
+        height: 100%;
+        clip-path: none;
+        margin: 0;
+
+        .show-moves {
+          flex-direction: column;
+        }
+      }
+      .message-card {
+        text-align: center;
+
+        h3 {
+          display: none;
+        }
+
+        .wins-losses {
+          flex-direction: column;
+          margin-top: 1rem;
+          gap: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .single-player-wrapper {
+    .container {
+      .choices {
+        .user-choices {
+          .primary-button--freezed {
+            display: none;
+          }
+        }
+
+        .message-card {
+          padding: 5rem 5rem;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

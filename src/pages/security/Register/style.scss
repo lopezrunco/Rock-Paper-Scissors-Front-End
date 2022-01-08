@@ -38,3 +38,21 @@
       color: $secondary-color;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .register-container {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .register-container {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .register-container {
+    width: 90%;
+  }
+}

@@ -70,13 +70,13 @@ function App() {
         <main className="single-player-wrapper">
             <div className='container'>
 
-                <div className='row mb-4 message-card'>
-                    <div className='col-6'>
+                <div className='row message-card'>
+                    <div className='col-md-6'>
                         <div className=''>
                             <h3>Single player</h3>
                         </div>
                     </div>
-                    <div className='col-6 wins-losses'>
+                    <div className='col-md-6 wins-losses'>
                         {/* Jugadas perdidas y ganadas */}
                         <div className='wins'>
                             <h4 className='number'>{wins}</h4>
@@ -116,7 +116,7 @@ function App() {
 
                 <div className='choices row'>
                     {/* Botones para jugar */}
-                    <div className='col-8'>
+                    <div className='col-12 col-lg-8 user-choices'>
                         <p className='primary-button--freezed'>Your choices:</p>
                         <div className='message-card'>
                             <span className='rock' onClick={() => handleUserChoice(1)}><Rock /></span>
@@ -126,7 +126,7 @@ function App() {
                     </div>
 
                     {/* Muestra la jugada del player 2 */}
-                    <div className='col-4'>
+                    <div className='col-12 col-lg-4 random-choices'>
                         <p className='primary-button--freezed'>Random choice:</p>
                         <div className='message-card'>
                             <span className='player-two-choice'><Question /></span>

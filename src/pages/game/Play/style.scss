@@ -31,3 +31,38 @@
     gap: 1rem;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .play {
+    .choices {
+      padding: 2rem 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main.play {
+    .container {
+      padding: 50px 10px;
+
+      .choices {
+        padding: 0;
+        clip-path: none;
+        background-color: transparent;
+        background-image: none;
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  main.play {
+    .container {
+      .choices {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
