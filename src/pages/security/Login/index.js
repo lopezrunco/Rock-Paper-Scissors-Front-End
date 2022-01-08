@@ -79,71 +79,73 @@ function Login() {
     }
 
     return (
-        <div className='container'>
-            <div className='row'>
-                <div className='col'>
-                    <div className='login-container'>
-                        <h1>User login</h1>
-                        <div className='separator'></div>
-                        <p>
-                            Login to RPS so you can create games, play with friends and have fun!
-                        </p>
+        <main>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'>
+                        <div className='login-container'>
+                            <h1>User login</h1>
+                            <div className='separator'></div>
+                            <p>
+                                Login to RPS so you can create games, play with friends and have fun!
+                            </p>
 
-                        <label htmlFor='nickname'>
-                            <input
-                                type='text'
-                                value={data.nickname}
-                                onChange={handleInputChange}
-                                name='nickname'
-                                id='nickname'
-                            />
-                            Nickname *
-                        </label>
+                            <label htmlFor='nickname'>
+                                <input
+                                    type='text'
+                                    value={data.nickname}
+                                    onChange={handleInputChange}
+                                    name='nickname'
+                                    id='nickname'
+                                />
+                                Nickname *
+                            </label>
 
-                        <label htmlFor='password'>
-                            <input
-                                type='password'
-                                value={data.password}
-                                onChange={handleInputChange}
-                                name='password'
-                                id='password'
-                            />
-                            Password *
-                        </label>
+                            <label htmlFor='password'>
+                                <input
+                                    type='password'
+                                    value={data.password}
+                                    onChange={handleInputChange}
+                                    name='password'
+                                    id='password'
+                                />
+                                Password *
+                            </label>
 
-                        <label htmlFor='token'>
-                            <input
-                                type='password'
-                                value={data.token}
-                                onChange={handleInputChange}
-                                name='token'
-                                id='token'
-                            />
-                            Token
-                        </label>
+                            <label htmlFor='token'>
+                                <input
+                                    type='password'
+                                    value={data.token}
+                                    onChange={handleInputChange}
+                                    name='token'
+                                    id='token'
+                                />
+                                Token
+                            </label>
 
-                        {/* Si se estan enviando datos, se deshabilita el boton y se muestra mensaje de espera */}
-                        <button onClick={handleFormSubmit} disabled={data.isSubmitting} className='primary-button'>
-                            {data.isSubmitting ? ("Please wait...") : ("Login")}
-                        </button>
+                            {/* Si se estan enviando datos, se deshabilita el boton y se muestra mensaje de espera */}
+                            <button onClick={handleFormSubmit} disabled={data.isSubmitting} className='primary-button'>
+                                {data.isSubmitting ? ("Please wait...") : ("Login")}
+                            </button>
 
-                        {data.errorMessage && (
-                            <span className='error-message'>
-                                <ExclamationCircle />
-                                {data.errorMessage}
-                            </span>
-                        )}
+                            {data.errorMessage && (
+                                <span className='error-message'>
+                                    <ExclamationCircle />
+                                    {data.errorMessage}
+                                </span>
+                            )}
+
+                        </div>
+
+                        <div className='links'>
+                            <small>Don't yo have an account yet? <Link to="/register">Register</Link></small>
+                            <small><Link to="/">Back to landing</Link></small>
+                        </div>
 
                     </div>
-
-                    <div className='links'>
-                        <small>Don't yo have an account yet? <Link to="/register">Register</Link></small>
-                        <small><Link to="/">Back to landing</Link></small>
-                    </div>
-
                 </div>
             </div>
-        </div>
+        </main>
     )
 }
 

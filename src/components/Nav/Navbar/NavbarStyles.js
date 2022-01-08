@@ -28,6 +28,10 @@ export const NavbarWrapper = styled.nav`
     transition: all 0.5s !important;
   }
 
+  a.active {
+    color: #deb400 !important;
+  }
+
   a:hover {
     clip-path: polygon(0% 0%,0% 100%,90% 92%,98% 94%,98% 0%) !important;
     color: #deb400 !important;

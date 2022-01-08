@@ -18,16 +18,16 @@ function Navbar({ open, handleClick }) {
 
     return (
         <NavbarWrapper open={open}>
-            <NavigationLink onClick={handleClick} className="menu-button" to="/"><House /><span>Home</span></NavigationLink>
-            <NavigationLink onClick={handleClick} className="menu-button" to="/single-player-start-screen"><Person /><span>Singleplayer</span></NavigationLink>
-            <NavigationLink onClick={handleClick} className="menu-button" to="/multi-player-start-screen"><People /><span>Multiplayer</span></NavigationLink>
+            <NavigationLink onClick={handleClick} to="/"><House /><span>Home</span></NavigationLink>
+            <NavigationLink onClick={handleClick} to="/single-player-start-screen"><Person /><span>Singleplayer</span></NavigationLink>
+            <NavigationLink onClick={handleClick} to="/multi-player-start-screen"><People /><span>Multiplayer</span></NavigationLink>
             {authState.user && (
                 <>
-                    <NavigationLink onClick={handleClick} className="menu-button" to="/games/on-play"><Joystick /><span>OnPlay</span></NavigationLink>
-                    <NavigationLink onClick={handleClick} className="menu-button" to="/games/history"><ClockHistory /><span>History</span></NavigationLink>
-                    <NavigationLink onClick={handleClick} className="menu-button" to="/user/dashboard"><Clipboard /><span>Profile</span></NavigationLink>
+                    <NavigationLink onClick={handleClick} to="/games/on-play"><Joystick /><span>OnPlay</span></NavigationLink>
+                    <NavigationLink onClick={handleClick} to="/games/history"><ClockHistory /><span>History</span></NavigationLink>
+                    <NavigationLink onClick={handleClick} to="/user/dashboard"><Clipboard /><span>Profile</span></NavigationLink>
                     <button classNameName='logout-button' onClick={logout}>
-                        <NavigationLink onClick={handleClick} className="menu-button" to="/"><BoxArrowRight />Logout</NavigationLink>
+                        <NavigationLink onClick={handleClick} to="/logged-out"><BoxArrowRight />Logout</NavigationLink>
                     </button>
                 </>
             )}

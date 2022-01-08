@@ -72,71 +72,73 @@ function Register() {
     }
 
     return (
-        <div className='container'>
-            <div className='row'>
-                <div className='col'>
-                    <div className='register-container'>
-                        <h1>Register</h1>
-                        <div className='separator'></div>
-                        <p>
-                            Register to RPS so you can create games, play with friends and have fun!
-                        </p>
+        <main>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'>
+                        <div className='register-container'>
+                            <h1>Register</h1>
+                            <div className='separator'></div>
+                            <p>
+                                Register to RPS so you can create games, play with friends and have fun!
+                            </p>
 
-                        <label htmlFor='nickname'>
-                            <input
-                                type='text'
-                                value={data.nickname}
-                                onChange={handleInputChange}
-                                name='nickname'
-                                id='nickname'
-                            />
-                            Nickname *
-                        </label>
+                            <label htmlFor='nickname'>
+                                <input
+                                    type='text'
+                                    value={data.nickname}
+                                    onChange={handleInputChange}
+                                    name='nickname'
+                                    id='nickname'
+                                />
+                                Nickname *
+                            </label>
 
-                        <label htmlFor='email'>
-                            <input
-                                type='email'
-                                value={data.email}
-                                onChange={handleInputChange}
-                                name='email'
-                                id='email'
-                            />
-                            Email *
-                        </label>
+                            <label htmlFor='email'>
+                                <input
+                                    type='email'
+                                    value={data.email}
+                                    onChange={handleInputChange}
+                                    name='email'
+                                    id='email'
+                                />
+                                Email *
+                            </label>
 
-                        <label htmlFor='password'>
-                            <input
-                                type='password'
-                                value={data.password}
-                                onChange={handleInputChange}
-                                name='password'
-                                id='password'
-                            />
-                            Password *
-                        </label>
+                            <label htmlFor='password'>
+                                <input
+                                    type='password'
+                                    value={data.password}
+                                    onChange={handleInputChange}
+                                    name='password'
+                                    id='password'
+                                />
+                                Password *
+                            </label>
 
-                        {/* Si se estan enviando datos, se deshabilita el boton y se muestra mensaje de espera */}
-                        <button onClick={handleFormSubmit} disabled={data.isSubmitting} className='primary-button'>
-                            {data.isSubmitting ? ("Please wait...") : ("Register")}
-                        </button>
+                            {/* Si se estan enviando datos, se deshabilita el boton y se muestra mensaje de espera */}
+                            <button onClick={handleFormSubmit} disabled={data.isSubmitting} className='primary-button'>
+                                {data.isSubmitting ? ("Please wait...") : ("Register")}
+                            </button>
 
-                        {data.errorMessage && (
-                            <span className='error-message'>
-                                <ExclamationCircle />
-                                {data.errorMessage}
-                            </span>
-                        )}
+                            {data.errorMessage && (
+                                <span className='error-message'>
+                                    <ExclamationCircle />
+                                    {data.errorMessage}
+                                </span>
+                            )}
+
+                        </div>
+
+                        <div className='links'>
+                            <small>You already have an account? <Link to="/login">Login</Link></small>
+                            <small><Link to="/">Back to landing</Link></small>
+                        </div>
 
                     </div>
-
-                    <div className='links'>
-                        <small>You already have an account? <Link to="/login">Login</Link></small>
-                        <small><Link to="/">Back to landing</Link></small>
-                    </div>
-
                 </div>
             </div>
-        </div>
+        </main>
     )
 }
 
