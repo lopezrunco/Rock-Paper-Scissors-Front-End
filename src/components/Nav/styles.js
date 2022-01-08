@@ -8,6 +8,8 @@ export const HeaderWrapper = styled.header`
   align-items: center;
   color: #ececec;
   z-index: 9999;
+  position: fixed;
+  width: 100%;
   
   @media only screen and (min-width: 992px) {
     background-color: transparent;

@@ -13,7 +13,7 @@ function Nav() {
 
     return (
         <HeaderWrapper>
-            <Navbar open={open} />
+            <Navbar open={open} handleClick={handleClick} />
             <MenuButton open={open} handleClick={handleClick} />
         </HeaderWrapper>
     )

@@ -104,8 +104,6 @@ a:hover {
   clip-path: polygon(0% 0%, 5% 100%, 87% 88%, 99% 90%, 94% 4%);
   transition: all 0.5s;
 
-  
-
   &--faded {
     @extend .primary-button;
     background-color: $secondary-color-faded;
@@ -237,10 +235,13 @@ a:hover {
   transform: translate(-1rem, -1rem);
 }
 
-main .container {
-  padding: 50px 80px;
-  transition: ease-in-out 0.25s;
-  transition: $main-transition;
+main {
+  padding-top: 8vh;
+
+  .container {
+    padding: 60px 80px;
+    transition: $main-transition;
+  }
 }
 
 .subtitle {
