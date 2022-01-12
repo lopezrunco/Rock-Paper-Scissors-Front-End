@@ -266,6 +266,19 @@ main {
   border-radius: 10px;
 }
 
+.count-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+
+  p,
+  h6 {
+    margin-bottom: 0;
+  }
+}
+
 .logout-button {
   border: none;
   background-color: transparent;

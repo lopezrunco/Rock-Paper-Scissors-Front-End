@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ChevronLeft, ChevronRight } from 'react-bootstrap-icons'
+import { ChevronLeft, ChevronRight, PersonFill } from 'react-bootstrap-icons'
 
 import { refreshToken } from '../../../utils/refresh-token'
 import { apiUrl } from '../../../utils/api-url'
@@ -19,6 +19,7 @@ export const UsersContext = createContext()
 // Estado inicial del componente
 const initialState = {
     users: [],
+    count: 0,
     isFetching: false,
     hasError: false
 }
@@ -35,7 +36,8 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isFetching: false,
-                users: action.payload.users // Setea los usuarios que llegaron en la peticion 
+                users: action.payload.users, // Setea los usuarios que llegaron en la peticion
+                count: action.payload.meta.count
             }
         case FETCH_USERS_FAILURE:
             return {
@@ -136,6 +138,12 @@ function SelectOpponent() {
                     <div className="row">
                         <div className="col-12">
                             <PageTitle title="Select your opponent" subtitle="Begin a new game" />
+                            <div className='separator'></div>
+                            <div className='count-info'>
+                                <PersonFill />
+                                <p>Available:</p>
+                                <h6>{state.count - 1}</h6>
+                            </div>
                         </div>
 
                         <div className="col-12">
