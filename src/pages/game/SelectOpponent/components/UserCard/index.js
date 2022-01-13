@@ -98,15 +98,16 @@ function UserCard({ user }) {
 
     return (
         <div className="col-12 col-lg-6 col-xl-4">
-                <button onClick={() => createGame(user.id)} disabled={state.isSending} className="user-card">
-                    <PersonFill />
-                    {state.isSending ? ("Please wait...") : <h4>{user.nickname}</h4>}
-                </button>
-
-                {state.hasError && (
-                    <span className="form-error">An error has occurred!</span>
-                )}
-
+            <button onClick={() => createGame(user.id)} disabled={state.isSending} className="user-card">
+                <PersonFill />
+                {
+                    state.isSending ?
+                        ("Please wait...") :
+                        state.hasError ?
+                            ("Error selecting this user") :
+                            <h4>{user.nickname}</h4>
+                }
+            </button>
         </div>
     )
 }
