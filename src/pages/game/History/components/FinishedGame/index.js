@@ -49,8 +49,6 @@ function FinishedGame({ game }) {
             for (let findWinnerIndex = 0; findWinnerIndex < game.movesWinners.length; findWinnerIndex++) {
                 if (game.movesWinners[findWinnerIndex + 1] === game.movesWinners[findWinnerIndex]) {
                     winner = game.movesWinners[findWinnerIndex]
-                } else {
-                    winner = game.movesWinners[findWinnerIndex]
                 }
             }
         }
@@ -63,7 +61,7 @@ function FinishedGame({ game }) {
         } else if (winner === game.playerTwoId) {
             winnerNickname = game.playerTwoNickname
         } else if (winner === 0) {
-            winnerNickname = 'Draw!'
+            winnerNickname = ''
         }
     }
     foundWinnerNickname()
