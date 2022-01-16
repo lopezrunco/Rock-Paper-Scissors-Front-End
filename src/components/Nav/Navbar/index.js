@@ -26,7 +26,7 @@ function Navbar({ open, handleClick }) {
                     <NavigationLink onClick={handleClick} to="/games/on-play"><Joystick /><span>OnPlay</span></NavigationLink>
                     <NavigationLink onClick={handleClick} to="/games/history"><ClockHistory /><span>History</span></NavigationLink>
                     <NavigationLink onClick={handleClick} to="/user/dashboard"><Clipboard /><span>Profile</span></NavigationLink>
-                    <button classNameName='logout-button' onClick={logout}>
+                    <button className='logout-button' onClick={logout}>
                         <NavigationLink onClick={handleClick} to="/logged-out"><BoxArrowRight />Logout</NavigationLink>
                     </button>
                 </>
