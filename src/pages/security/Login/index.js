@@ -138,7 +138,7 @@ function Login() {
                         </div>
 
                         <div className='links'>
-                            <small>Don't yo have an account yet? <Link to="/register">Register</Link></small>
+                            <small>Don't you have an account yet? <Link to="/register">Register</Link></small>
                             <small><Link to="/">Back to landing</Link></small>
                         </div>
 

@@ -23,7 +23,7 @@ const SinglePlayerStartScreen = () => {
                         <p>
                             If you don't have an opponent to play with you, don't be upset. You can spend some time playing Rock Paper Scissors with a super AI. <br />
                             <br />
-                            Please click a “Get started” button and the game will play with you.
+                            Just press the <strong>Get started</strong> button and we will generate  random plays for you.
                         </p>
                         <Link to="/single-play" className="primary-button"><Person />Get started</Link>
                     </div>

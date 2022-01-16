@@ -108,7 +108,7 @@ function DashBoard() {
                     <div className="col-12">
                         <PageTitle title={authState.user.nickname} subtitle="Your profile" />
                         <div className='separator'></div>
-                        <p>Here you can check your user info, view your activity and your progress in the game.</p>
+                        <p>Here you can check your user info and enable MFA.</p>
                     </div>
                 </div>
                 <div className='row mt-4'>
@@ -116,9 +116,9 @@ function DashBoard() {
                         <div className='info-card user'>
                             <h6>User info</h6>
                             <div className='separator'></div>
-                            <p>Nickname: {authState.user.nickname}</p>
-                            <p>User ID: {authState.user.id}</p>
-                            <p>Email: {authState.user.email}</p>
+                            <p>Nickname: <strong>{authState.user.nickname}</strong></p>
+                            <p>User ID: <strong>{authState.user.id}</strong></p>
+                            <p>Email: <strong>{authState.user.email}</strong></p>
                         </div>
                     </div>
                     <div className='col-12'>
@@ -129,7 +129,7 @@ function DashBoard() {
                             <div className=' enable-mfa-info'>
                                 <p>
                                     Multi-Factor Authentication (MFA) increases security of your account.<br />
-                                    To use this feature, click on button below.
+                                    To use this feature, click on the button <strong>Enable MFA.</strong> 
                                 </p>
 
                                 {authState.user.mfaEnabled ? (

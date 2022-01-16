@@ -21,7 +21,7 @@ function WelcomeScreen() {
                                 <p>
                                     Many of us used to play it in a school to resolve disputes or
                                     just to spend some time. <br /> But how to play if your friends are far
-                                    away? Voilà!
+                                    away? That's why we made this game. Enjoy it!
                                 </p>
                                 <div className='separator'></div>
                                 <h4>What are the rules?</h4>
@@ -29,7 +29,7 @@ function WelcomeScreen() {
                                     If you choose Rock, you will win against Scissors but lose against Paper.<br />
                                     If you choose Scissors, you will win against Paper but lose against Rock.<br />
                                     If you choose Paper, you will win against Rock but lose against Scissors.<br />
-                                    There are 3 rounds. The game ends when somebody gets 2 wins.
+                                    There are 3 rounds. To win you must get 2 wins.
                                 </p>
                                 {!state.user && (<Link to="/login" className="primary-button"><Person />Login</Link>)}
                             </div>

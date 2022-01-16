@@ -24,7 +24,8 @@ function MultiPlayerStartScreen() {
                     </div>
                     <div className="col-md-7 text-col">
                         <p>
-                            If you want to play with your friend, just press “Get Started” and you will be redirected to the next page. You will see a players list, select an oponent and press "Start".
+                            If you want to play with a friend or a mortal enemy, press <strong>Get Started</strong>. You will see a list to select your opponent. <br/>
+                            Note that in case you haven't finished a game with an opponent, you can't start a new one with him.
                         </p>
                         {
                             state.user ? (

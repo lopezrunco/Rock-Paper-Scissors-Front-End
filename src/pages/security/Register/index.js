@@ -131,7 +131,7 @@ function Register() {
                         </div>
 
                         <div className='links'>
-                            <small>You already have an account? <Link to="/login">Login</Link></small>
+                            <small>Do you already have an account? <Link to="/login">Login</Link></small>
                             <small><Link to="/">Back to landing</Link></small>
                         </div>
 
