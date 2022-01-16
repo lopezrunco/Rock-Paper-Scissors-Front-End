@@ -120,7 +120,7 @@ function Login() {
                                     name='token'
                                     id='token'
                                 />
-                                Token
+                                Token (Only if you enabled MFA)
                             </label>
 
                             {/* Si se estan enviando datos, se deshabilita el boton y se muestra mensaje de espera */}

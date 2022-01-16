@@ -12,6 +12,7 @@ import NoOpponents from '../../../components/NoOpponents'
 import PageTitle from '../../../components/PageTitle'
 import UserCard from './components/UserCard'
 import Loader from '../../../components/Loader'
+import FetchError from '../../../components/FetchError'
 
 // Creacion de contexto para los datos de usuarios
 export const UsersContext = createContext()
@@ -139,11 +140,13 @@ function SelectOpponent() {
                         <div className="col-12">
                             <PageTitle title="Select your opponent" subtitle="Begin a new game" />
                             <div className='separator'></div>
-                            <div className='count-info'>
-                                <PersonFill />
-                                <p>Available:</p>
-                                <h6>{state.count - 1}</h6>
-                            </div>
+                            {!state.hasError && (
+                                <div className='count-info'>
+                                    <PersonFill />
+                                    <p>Available:</p>
+                                    <h6>{state.count - 1}</h6>
+                                </div>
+                            )}
                         </div>
 
                         <div className="col-12">
@@ -151,7 +154,7 @@ function SelectOpponent() {
                                 {state.isFetching ? (
                                     <Loader />
                                 ) : state.hasError ? (
-                                    <span>An error ocurred</span>
+                                    <FetchError />
                                 ) : (
                                     <>
                                         {/* Si hay usuarios, mapea el array y genera un componente por cada uno */}

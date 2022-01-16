@@ -13,6 +13,7 @@ import OnPlayGame from './components/OnPlayGame'
 import PageTitle from '../../../components/PageTitle'
 import NoGameItems from '../../../components/NoGameItems'
 import Loader from '../../../components/Loader'
+import FetchError from '../../../components/FetchError'
 
 // Creacion de contexto para los onplay games
 export const OnPlayGamesContext = createContext()
@@ -134,7 +135,7 @@ function OnPlayGames() {
                                 {state.isFetching ? (
                                     <Loader />
                                 ) : state.hasError ? (
-                                    <span>An error ocurred</span>
+                                    <FetchError />
                                 ) : (
                                     <>
                                         {/* Si hay onplay games, genera un componente por cada uno */}

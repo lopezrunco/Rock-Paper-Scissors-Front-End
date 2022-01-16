@@ -12,6 +12,7 @@ import NoGameItems from "../../../components/NoGameItems"
 import PageTitle from "../../../components/PageTitle"
 import { AuthContext } from '../../../App'
 import Loader from "../../../components/Loader"
+import FetchError from "../../../components/FetchError"
 
 // Creacion de contexto para el historico de juegos
 export const HistoryGamesContext = createContext()
@@ -128,7 +129,7 @@ function History() {
                                 {state.isFetching ? (
                                     <Loader />
                                 ) : state.hasError ? (
-                                    <span>An error ocurred</span>
+                                    <FetchError />
                                 ) : (
                                     <>
                                         {/* Si hay juegos, genera un componente por cada uno */}
