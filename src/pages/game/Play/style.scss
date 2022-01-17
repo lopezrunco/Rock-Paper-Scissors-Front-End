@@ -12,7 +12,7 @@
     label {
       img {
         cursor: pointer;
-        width: 150px;
+        width: 10rem;
 
         &:hover {
           transform: scale(1.1);
@@ -43,7 +43,7 @@
 @media screen and (max-width: 768px) {
   main.play {
     .container {
-      padding: 50px 10px;
+      padding: 4rem 1rem;
 
       .choices {
         padding: 0;

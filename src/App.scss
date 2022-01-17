@@ -18,11 +18,11 @@ body {
   font-family: "Orbitron", sans-serif;
   background-color: #dedcc3;
   color: $text-color;
-  letter-spacing: 1px;
+  letter-spacing: .05rem;
 }
 
 input {
-  letter-spacing: 1px;
+  letter-spacing: .05rem;
 }
 
 a {
@@ -54,7 +54,7 @@ a:hover {
   clip-path: polygon(0% 0%, 5% 100%, 87% 88%, 99% 90%, 94% 4%);
 
   svg {
-    width: 50px;
+    width: 4rem;
     height: auto;
   }
 }
@@ -239,31 +239,31 @@ main {
   padding-top: 8vh;
 
   .container {
-    padding: 60px 80px;
+    padding: 4rem;
     transition: $main-transition;
   }
 }
 
 .subtitle {
-  font-size: 21px;
+  font-size: 1.2rem;
   color: $primary-color;
   font-weight: 700;
 }
 
 .category {
-  font-size: 16px;
+  font-size: 1rem;
   color: $primary-color;
   font-weight: 700;
   margin-bottom: 0;
 }
 
 .separator {
-  width: 100px;
-  height: 5px;
+  width: 5rem;
+  height: .3rem;
   display: block;
   background-color: $primary-color;
   margin: 1rem 0;
-  border-radius: 10px;
+  border-radius: .5rem;
 }
 
 .count-info {
@@ -295,48 +295,48 @@ main {
 }
 
 h3 {
-  font-size: 35px;
+  font-size: 2.2rem;
   color: $text-color;
   font-weight: 700;
 }
 
 h4 {
-  font-size: 25px;
+  font-size: 1.5rem;
   color: $text-color;
   font-weight: 700;
 }
 
 h5 {
-  font-size: 19px;
+  font-size: 1.2rem;
   color: $text-color;
   font-weight: 700;
 }
 
 h6 {
-  font-size: 18px;
+  font-size: 1.1rem;
   color: $text-color;
   font-weight: 700;
 }
 
 p {
-  font-size: 16px;
+  font-size: 1rem;
   color: $text-color;
 }
 
 p.large {
-  font-size: 19px;
+  font-size: 1.2rem;
   color: $text-color;
 }
 
 @media screen and (max-width: 576px) {
   main .container {
-    padding: 40px;
+    padding: 2.5rem;
     width: 98%;
   }
 }
 
 @media screen and (max-width: 340px) {
   main .container {
-    padding: 20px;
+    padding: 1rem;
   }
 }

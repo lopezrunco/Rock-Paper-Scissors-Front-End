@@ -1,3 +1,4 @@
+import { House } from 'react-bootstrap-icons'
 import forbiddenImg from '../../../assets/img/403.png'
 import './style.scss'
 
@@ -16,7 +17,7 @@ function Forbidden() {
                             <p>
                                 Sorry, friend. This page has restricted access.
                             </p>
-                            <a className="primary-button" href="/"><i class="fas fa-home"></i>Home</a>
+                            <a className="primary-button" href="/"><House/>Home</a>
                         </div>
                     </div>
                 </div>

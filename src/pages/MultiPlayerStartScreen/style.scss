@@ -9,7 +9,7 @@
     overflow: hidden;
 
     img {
-      max-width: 300px;
+      max-width: 20rem;
     }
   }
 
@@ -33,7 +33,7 @@
 @media screen and (max-width: 768px) {
   .multi-player-start-screen {
     .text-col {
-      gap: 20px;
+      gap: 1rem;
     }
   }
 }
