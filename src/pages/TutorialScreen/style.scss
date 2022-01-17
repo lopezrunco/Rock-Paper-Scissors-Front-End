@@ -1,0 +1,53 @@
+@import "../../Variables.scss";
+
+.tutorial-screen {
+  .section {
+    margin: 3rem 0;
+    padding: 3rem 0;
+
+    .image {
+      .user-card {
+        margin-top: 0;
+      }
+
+      .game-card--onplay,
+      .user-card,
+      .primary-button {
+        cursor: initial;
+      }
+
+      img {
+        width: 100%;
+        overflow: hidden;
+      }
+    }
+    .text {
+      h5 {
+        margin-bottom: 1rem;
+      }
+
+      a {
+        font-weight: 700;
+        color: $secondary-color;
+      }
+    }
+    .separator {
+      margin: 0 auto;
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .tutorial-screen {
+    .section {
+      margin: 1rem 0;
+      padding: 1rem 0;
+      text-align: center;
+
+      .image {
+        display: none;
+      }
+    }
+  }
+}

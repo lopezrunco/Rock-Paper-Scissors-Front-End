@@ -17,6 +17,7 @@ import OnPlayGames from './pages/game/OnPlayGames'
 import Play from './pages/game/Play'
 import Result from './pages/game/Result'
 import History from './pages/game/History'
+import TutorialScreen from './pages/TutorialScreen'
 
 import RequireAuth from './components/RequireAuth'
 import BackgroundShape from './components/BackgroundShape'
@@ -199,6 +200,12 @@ function App() {
 
           <Route path="/single-player-start-screen" element={
             <SinglePlayerStartScreen />
+          } />
+
+          <Route path="/tutorial" element={
+            <RequireAuth>
+              <TutorialScreen />
+            </RequireAuth>
           } />
 
           <Route path="/user/dashboard" element={

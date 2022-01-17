@@ -1,14 +1,14 @@
 import { useContext, useReducer } from 'react'
-
-import { AuthContext } from '../../../App'
-import { ENABLE_MFA_FAILURE, ENABLE_MFA_REQUEST, ENABLE_MFA_SUCCESS } from './action-types'
-
-import PageTitle from "../../../components/PageTitle"
-import './style.scss'
 import { useNavigate } from 'react-router-dom'
+
+import { ENABLE_MFA_FAILURE, ENABLE_MFA_REQUEST, ENABLE_MFA_SUCCESS } from './action-types'
 import { ENABLE_MFA, HIDE_LOADER, SHOW_LOADER } from '../../../action-types'
+import { AuthContext } from '../../../App'
 import { apiUrl } from '../../../utils/api-url'
 import { refreshToken } from '../../../utils/refresh-token'
+import PageTitle from "../../../components/PageTitle"
+
+import './style.scss'
 
 const initialState = {
     mfa: undefined,
@@ -112,6 +112,7 @@ function DashBoard() {
                     </div>
                 </div>
                 <div className='row mt-4'>
+
                     <div className='col-12'>
                         <div className='info-card user'>
                             <h6>User info</h6>
@@ -121,15 +122,16 @@ function DashBoard() {
                             <p>Email: <strong>{authState.user.email}</strong></p>
                         </div>
                     </div>
+
                     <div className='col-12'>
                         <div className='info-card preferences'>
 
                             <h6>Preferences</h6>
                             <div className='separator'></div>
-                            <div className=' enable-mfa-info'>
+                            <div className='enable-mfa-info'>
                                 <p>
                                     Multi-Factor Authentication (MFA) increases security of your account.<br />
-                                    To use this feature, click on the button <strong>Enable MFA.</strong> 
+                                    To use this feature, click on the button <strong>Enable MFA.</strong>
                                 </p>
 
                                 {authState.user.mfaEnabled ? (
@@ -155,6 +157,24 @@ function DashBoard() {
                             </div>
                         </div>
                     </div>
+
+                    <div className='col-12'>
+                        <div className='info-card'>
+                            <h6>Game tutorial</h6>
+                            <div className='separator'></div>
+                            <div className='row'>
+                                <div className='col-lg-10'>
+                                    <p>
+                                        If this is your first time around here or you want to refresh your game skills, go to the tutorial page.
+                                    </p>
+                                </div>
+                                <div className='col-lg-2'>
+                                    <a href='/tutorial' className='primary-button'>Tutorial</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
 

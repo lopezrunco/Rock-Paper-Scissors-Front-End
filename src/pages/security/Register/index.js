@@ -60,7 +60,7 @@ function Register() {
                 type: LOGIN,
                 payload: data
             })
-            navigate('/')
+            navigate('/tutorial')
         }).catch(error => {
             console.error(error)
             setData({
