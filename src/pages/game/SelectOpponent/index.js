@@ -20,7 +20,6 @@ export const UsersContext = createContext()
 // Estado inicial del componente
 const initialState = {
     users: [],
-    count: 0,
     isFetching: false,
     hasError: false
 }
@@ -37,8 +36,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isFetching: false,
-                users: action.payload.users, // Setea los usuarios que llegaron en la peticion
-                count: action.payload.meta.count
+                users: action.payload.users // Setea los usuarios que llegaron en la peticion
             }
         case FETCH_USERS_FAILURE:
             return {
@@ -65,7 +63,7 @@ function SelectOpponent() {
 
     // Manejo de paginacion
     const [currentPage, setCurentPage] = useState(1)
-    const itemsPerPage = 9
+    const itemsPerPage = 30
 
     function prevPage() {
         setCurentPage(currentPage - 1)
@@ -143,8 +141,8 @@ function SelectOpponent() {
                             {!state.hasError && (
                                 <div className='count-info'>
                                     <PersonFill />
-                                    <p>Available:</p>
-                                    <h6>{state.count - 1}</h6>
+                                    <p>Available in this page:</p>
+                                    <h6>{state.users.length}</h6>
                                 </div>
                             )}
                         </div>
