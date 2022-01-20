@@ -132,7 +132,7 @@ function SelectOpponent() {
         // Todos los elementos que se renderizan aqui tienen acceso al contexto de usuarios,
         // puntualmente al state y al dispatch.
         <UsersContext.Provider value={{ state, dispatch }}>
-            <main>
+            <main className='select-opponent'>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -148,7 +148,7 @@ function SelectOpponent() {
                         </div>
 
                         <div className="col-12">
-                            <div className='row users-container mt-5'>
+                            <div className='row users-container mt-5 overflow-hidden'>
                                 {state.isFetching ? (
                                     <Loader />
                                 ) : state.hasError ? (

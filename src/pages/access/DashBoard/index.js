@@ -108,7 +108,7 @@ function DashBoard() {
                     <div className="col-12">
                         <PageTitle title={authState.user.nickname} subtitle="Your profile" />
                         <div className='separator'></div>
-                        <p>Here you can check your user info and enable MFA.</p>
+                        <p>Below you can find small summary of your user info and preferences.</p>
                     </div>
                 </div>
                 <div className='row mt-4'>
