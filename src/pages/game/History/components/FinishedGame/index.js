@@ -67,11 +67,11 @@ function FinishedGame({ game }) {
     foundWinnerNickname()
 
     return (
-        <div className='col-md-6'>
+        <div className='col-lg-6'>
             <div className='row finished-game game-card--played'>
 
                 {/* Jugador 1 */}
-                <div className='col-6'>
+                <div className='col-6 text-truncate'>
                     <h6>{game.playerOneNickname}</h6>
                 </div>
                 <div className='col-6'>
@@ -81,7 +81,7 @@ function FinishedGame({ game }) {
                 </div>
                 <hr />
                 {/* Jugador 2 */}
-                <div className='col-6'>
+                <div className='col-6 text-truncate'>
                     <h6>{game.playerTwoNickname}</h6>
                 </div>
                 <div className='col-6'>

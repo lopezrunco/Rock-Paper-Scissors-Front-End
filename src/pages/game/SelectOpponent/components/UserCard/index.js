@@ -97,7 +97,7 @@ function UserCard({ user }) {
     }
 
     return (
-        <div className="col-12 col-lg-6 col-xl-4">
+        <div className="col-12 col-lg-6 col-xl-4 text-truncate">
             <button onClick={() => createGame(user.id)} disabled={state.isSending} className="user-card">
                 <PersonFill />
                 {
