@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { TrophyFill } from 'react-bootstrap-icons'
 
 import rockImg from '../../../../../assets/img/rock.png'
@@ -6,6 +7,13 @@ import scissorsImg from '../../../../../assets/img/scissors.png'
 import './style.scss'
 
 function FinishedGame({ game }) {
+
+    // Manejo de estado para mostrar o no detalles de la partida
+    const [openWinnerDetails, setOpenWinnerDetails] = useState(false)
+
+    const handleClick = () => {
+        setOpenWinnerDetails(!openWinnerDetails)
+    }
 
     const movesPlayerOne = []
     const movesPlayerTwo = []
@@ -122,9 +130,25 @@ function FinishedGame({ game }) {
                 </div>
 
             </div>
-            <span className='winner-card'><TrophyFill /><strong>{winnerNickname}</strong></span>
-            {/* <span><strong>{game.playerOneNickname}:</strong>{playerOneWins}<strong>{game.playerTwoNickname}:</strong>{playerTwoWins}<strong>Draws:</strong>{draw}</span> */}
+            <span onClick={handleClick} className='winner-card'><TrophyFill /><strong>{winnerNickname}</strong></span>
+            
+            {
+                openWinnerDetails === true &&
+                <div className='winner-details' onClick={handleClick}>
+                    <span className='winner'>
+                        <TrophyFill /><strong>{winnerNickname}</strong>
+                    </span>
+                    <span className='details'>
+                        <p>Game details:</p>
+                        <p><strong>{game.playerOneNickname}:</strong> {playerOneWins}</p>
+                        <p><strong>{game.playerTwoNickname}:</strong> {playerTwoWins}</p>
+                        <p><strong>Draws:</strong> {draw}</p>
+                    </span>
+                </div>
+            }
+
         </div>
+
     )
 }
 
