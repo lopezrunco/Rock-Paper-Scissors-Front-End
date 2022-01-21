@@ -6,65 +6,96 @@ import scissorsImg from '../../../../../assets/img/scissors.png'
 import './style.scss'
 
 function FinishedGame({ game }) {
-    // Generacion dinamica del historico de movimientos
+
     const movesPlayerOne = []
     const movesPlayerTwo = []
-    // Movimientos jugador 1
+    let playerOneWins = 0
+    let playerTwoWins = 0
+    let draw = 0
+    let winnerNickname = ''
+
+    // Generacion dinamica del historico de movimientos player 1
     game.playerOneMoves.forEach(element => {
-        // Piedra
         if (element === 1) {
             movesPlayerOne.push(<img className='move-img' src={rockImg} alt='Rock' />)
-            // Papel
         } else if (element === 2) {
             movesPlayerOne.push(<img className='move-img' src={paperImg} alt='Paper' />)
         } else if (element === 3) {
-            // Tijera
             movesPlayerOne.push(<img className='move-img' src={scissorsImg} alt='Scissors' />)
         } else {
             movesPlayerOne.push(<h5>{element}</h5>)
         }
     })
-    // Movimientos jugador 2
+    // Generacion dinamica del historico de movimientos player 2
     game.playerTwoMoves.forEach(element => {
-        // Piedra
         if (element === 1) {
             movesPlayerTwo.push(<img className='move-img' src={rockImg} alt='Rock' />)
-            // Papel
         } else if (element === 2) {
             movesPlayerTwo.push(<img className='move-img' src={paperImg} alt='Paper' />)
         } else if (element === 3) {
-            // Tijera
             movesPlayerTwo.push(<img className='move-img' src={scissorsImg} alt='Scissors' />)
         } else {
             movesPlayerTwo.push(<h5>{element}</h5>)
         }
     })
 
-    // Define el ganador del juego retornando el id que se repite en el array
-    let winner = ''
-    let winnerNickname = ''
-
+    // Debe de haberse terminado la partida para definir el ganador
     if (game.movesWinners.length === 3) {
+
+        // Itera por el array de ganadores y empuja un valor segun el caso
         function findWinner() {
-            for (let findWinnerIndex = 0; findWinnerIndex < game.movesWinners.length; findWinnerIndex++) {
-                if (game.movesWinners[findWinnerIndex + 1] === game.movesWinners[findWinnerIndex]) {
-                    winner = game.movesWinners[findWinnerIndex]
+            game.movesWinners.forEach(arrayElement => {
+                switch (arrayElement) {
+                    case game.playerOneId:
+                        playerOneWins++
+                        break;
+                    case game.playerTwoId:
+                        playerTwoWins++
+                        break;
+                    case 0:
+                        draw++
+                        break;
+                    default:
+                        break;
                 }
+            })
+
+            // Definicion del ganador
+            if (playerOneWins === 3 && playerTwoWins === 0) {                       // Gana el 1
+                winnerNickname = game.playerOneNickname
+            } else if (playerTwoWins === 3 && playerOneWins === 0) {                // Gana el 2
+                winnerNickname = game.playerTwoNickname
+            } else if (playerOneWins === 2 && playerTwoWins === 1) {                // Gana el 1
+                winnerNickname = game.playerOneNickname
+            } else if (playerTwoWins === 2 && playerOneWins === 1) {                // Gana el 2
+                winnerNickname = game.playerTwoNickname
+            } else if (playerOneWins === 2 && draw === 1) {                         // Gana el 1
+                winnerNickname = game.playerOneNickname
+            } else if (playerTwoWins === 2 && draw === 1) {                         // Gana el 2
+                winnerNickname = game.playerTwoNickname
+            } else if (playerOneWins === 2 && draw === 0) {                         // Gana el 1
+                winnerNickname = game.playerOneNickname
+            } else if (playerTwoWins === 2 && draw === 0) {                         // Gana el 2
+                winnerNickname = game.playerTwoNickname
+            } else if (playerOneWins === 1 && draw === 0) {                         // Gana el 1
+                winnerNickname = game.playerOneNickname
+            } else if (playerTwoWins === 1 && draw === 0) {                         // Gana el 2
+                winnerNickname = game.playerTwoNickname
+            } else if (draw === 2 && playerOneWins === 1) {                         // Gana el 1
+                winnerNickname = game.playerOneNickname
+            } else if (draw === 2 && playerTwoWins === 1) {                         // Gana el 2
+                winnerNickname = game.playerTwoNickname
+            } else if (draw === 3) {                                                // Empate
+                winnerNickname = 'Draw!'
+            } else if (draw === 1 && playerOneWins === 1 && playerTwoWins === 1) {  // Empate
+                winnerNickname = 'Draw!'
+            } else {
+                winnerNickname = "Couldn't get the winner"
             }
         }
+
         findWinner()
     }
-
-    function foundWinnerNickname() {
-        if (winner === game.playerOneId) {
-            winnerNickname = game.playerOneNickname
-        } else if (winner === game.playerTwoId) {
-            winnerNickname = game.playerTwoNickname
-        } else if (winner === 0) {
-            winnerNickname = ''
-        }
-    }
-    foundWinnerNickname()
 
     return (
         <div className='col-lg-6'>
@@ -91,7 +122,8 @@ function FinishedGame({ game }) {
                 </div>
 
             </div>
-            <span className='winner-card'><TrophyFill />{winnerNickname}</span>
+            <span className='winner-card'><TrophyFill /><strong>{winnerNickname}</strong></span>
+            {/* <span><strong>{game.playerOneNickname}:</strong>{playerOneWins}<strong>{game.playerTwoNickname}:</strong>{playerTwoWins}<strong>Draws:</strong>{draw}</span> */}
         </div>
     )
 }

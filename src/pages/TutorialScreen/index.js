@@ -91,7 +91,7 @@ function TutorialScreen() {
                 {/* Como jugar */}
                 <div className="row section">
                     <div className='col-xl-3 image'>
-                        <img src={rpsLogo} />
+                        <img src={rpsLogo} alt='Rock Papper Scissors' />
                     </div>
                     <div className='col-xl-9 text'>
                         <h5>Play!</h5>
@@ -118,7 +118,7 @@ function TutorialScreen() {
                         </p>
                     </div>
                     <div className='col-xl-2 image'>
-                        <img src={questionImg} />
+                        <img src={questionImg} alt='Question' />
                     </div>
                     <div className='col-12'>
                         <div className='separator'></div>
