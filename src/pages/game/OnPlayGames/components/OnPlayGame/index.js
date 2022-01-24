@@ -61,7 +61,7 @@ function OnPlayGame({ game }) {
         allowContinueButton = true
     } else if (movesPlayerOne.length > movesPlayerTwo.length && game.playerTwoId === authState.user.id) {
         allowContinueButton = true
-    } else if (movesPlayerOne.length === movesPlayerTwo.length) {   // Si los dos van parejos, habilita a que cualquiera mueva
+    } else if (movesPlayerOne.length === movesPlayerTwo.length && game.playerOneId === authState.user.id) {   // Si los dos van parejos, habilita a que mueva el player one
         allowContinueButton = true
     }
 
