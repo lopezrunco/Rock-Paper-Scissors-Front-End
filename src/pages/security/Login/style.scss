@@ -9,18 +9,25 @@
   width: 30%;
   margin: 0 auto;
 
-  label {
-    width: 100%;
-    font-size: 0.7rem;
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    input {
+    label {
       width: 100%;
-      border: none;
-      background: none;
-      border-bottom: .05rem solid $dark-background-color;
-      outline: none;
-      padding: 0.5rem 0;
-      font-size: 1rem;
+      font-size: 0.7rem;
+
+      input {
+        width: 100%;
+        border: none;
+        background: none;
+        border-bottom: 0.05rem solid $dark-background-color;
+        outline: none;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+      }
     }
   }
 }

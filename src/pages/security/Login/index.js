@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ExclamationCircle } from 'react-bootstrap-icons'
+import { BoxArrowRight, ExclamationCircle } from 'react-bootstrap-icons'
 
-import { LOGIN } from '../../../action-types'
+import { LOGIN, LOGOUT } from '../../../action-types'
 import { AuthContext } from '../../../App'
 import { apiUrl } from '../../../utils/api-url'
 import './style.scss'
@@ -10,7 +10,7 @@ import './style.scss'
 function Login() {
 
     // Del contexto de autenticacion tomamos la funcion dispatch para indicar si ocurrio algun login
-    const { dispatch } = useContext(AuthContext)
+    const { state, dispatch } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -25,6 +25,11 @@ function Login() {
 
     // Seteo de estado inicial
     const [data, setData] = useState(initialState)
+
+    const logout = () => {
+        dispatch({ type: LOGOUT })
+        navigate('/logged-out')
+    }
 
     // Actualiza todos los datos de estado de una sola vez
     const handleInputChange = event => {
@@ -86,61 +91,76 @@ function Login() {
                         <div className='login-container'>
                             <h1>User login</h1>
                             <div className='separator'></div>
-                            <p>
-                                Login to RPS so you can create games, play with friends and have fun!
-                            </p>
 
-                            <label htmlFor='nickname'>
-                                <input
-                                    type='text'
-                                    value={data.nickname}
-                                    onChange={handleInputChange}
-                                    name='nickname'
-                                    id='nickname'
-                                />
-                                Nickname *
-                            </label>
+                            {state.user ? (
+                                <div className='text-center'>
+                                    <h6>You are already logged in as {state.user.nickname}. </h6>
+                                    <p>You need to log out before logging in as different user.</p>
+                                    <button className='primary-button' onClick={logout}><BoxArrowRight />Logout</button>
+                                </div>
+                            ) : (
+                                <p>Login to RPS so you can create games, play with friends and have fun!</p>
+                            )}
 
-                            <label htmlFor='password'>
-                                <input
-                                    type='password'
-                                    value={data.password}
-                                    onChange={handleInputChange}
-                                    name='password'
-                                    id='password'
-                                />
-                                Password *
-                            </label>
+                            {!state.user && (
+                                <div className='form-container'>
 
-                            <label htmlFor='token'>
-                                <input
-                                    type='password'
-                                    value={data.token}
-                                    onChange={handleInputChange}
-                                    name='token'
-                                    id='token'
-                                />
-                                Token (Only if you enabled MFA)
-                            </label>
+                                    <label htmlFor='nickname'>
+                                        <input
+                                            type='text'
+                                            value={data.nickname}
+                                            onChange={handleInputChange}
+                                            name='nickname'
+                                            id='nickname'
+                                        />
+                                        Nickname *
+                                    </label>
 
-                            {/* Si se estan enviando datos, se deshabilita el boton y se muestra mensaje de espera */}
-                            <button onClick={handleFormSubmit} disabled={data.isSubmitting} className='primary-button'>
-                                {data.isSubmitting ? ("Please wait...") : ("Login")}
-                            </button>
+                                    <label htmlFor='password'>
+                                        <input
+                                            type='password'
+                                            value={data.password}
+                                            onChange={handleInputChange}
+                                            name='password'
+                                            id='password'
+                                        />
+                                        Password *
+                                    </label>
 
-                            {data.errorMessage && (
-                                <span className='error-message'>
-                                    <ExclamationCircle />
-                                    {data.errorMessage}
-                                </span>
+                                    <label htmlFor='token'>
+                                        <input
+                                            type='password'
+                                            value={data.token}
+                                            onChange={handleInputChange}
+                                            name='token'
+                                            id='token'
+                                        />
+                                        Token (Only if you enabled MFA)
+                                    </label>
+
+                                    {/* Si se estan enviando datos, se deshabilita el boton y se muestra mensaje de espera */}
+                                    <button onClick={handleFormSubmit} disabled={data.isSubmitting} className='primary-button'>
+                                        {data.isSubmitting ? ("Please wait...") : ("Login")}
+                                    </button>
+
+                                    {data.errorMessage && (
+                                        <span className='error-message'>
+                                            <ExclamationCircle />
+                                            {data.errorMessage}
+                                        </span>
+                                    )}
+
+                                </div>
                             )}
 
                         </div>
 
-                        <div className='links'>
-                            <small>Don't you have an account yet? <Link to="/register">Register</Link></small>
-                            <small><Link to="/">Back to landing</Link></small>
-                        </div>
+                        {!state.user && (
+                            <div className='links'>
+                                <small>Don't you have an account yet? <Link to="/register">Register</Link></small>
+                                <small><Link to="/">Back to landing</Link></small>
+                            </div>
+                        )}
 
                     </div>
                 </div>
