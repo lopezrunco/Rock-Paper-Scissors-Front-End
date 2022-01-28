@@ -133,11 +133,11 @@ function SelectOpponent() {
         // Todos los elementos que se renderizan aqui tienen acceso al contexto de usuarios,
         // puntualmente al state y al dispatch.
         <UsersContext.Provider value={{ state, dispatch }}>
-            <FadeIn>
-                <main className='select-opponent'>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
+            <main className='select-opponent'>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <FadeIn>
                                 <PageTitle title="Select your opponent" subtitle="Begin a new game" />
                                 <div className='separator'></div>
                                 {!state.hasError && (
@@ -147,31 +147,35 @@ function SelectOpponent() {
                                         <h6>{state.users.length}</h6>
                                     </div>
                                 )}
-                            </div>
+                            </FadeIn>
+                        </div>
 
-                            <div className="col-12">
-                                <div className='row users-container mt-5 overflow-hidden'>
-                                    {state.isFetching ? (
-                                        <Loader />
-                                    ) : state.hasError ? (
+                        <div className="col-12">
+                            <div className='row users-container mt-5 overflow-hidden'>
+                                {state.isFetching ? (
+                                    <Loader />
+                                ) : state.hasError ? (
+                                    <FadeIn>
                                         <FetchError />
-                                    ) : (
-                                        <>
-                                            {/* Si hay usuarios, mapea el array y genera un componente por cada uno */}
-                                            {state.users.length > 0 ? (
-                                                state.users.map(user => (
-                                                    // Key se utiliza para facilitar el renderizado
-                                                    <UserCard key={user.id} user={user} />
-                                                ))
-                                            ) : (
-                                                <div><NoOpponents /></div>
-                                            )}
-                                        </>
-                                    )}
-                                </div>
+                                    </FadeIn>
+                                ) : (
+                                    <>
+                                        {/* Si hay usuarios, mapea el array y genera un componente por cada uno */}
+                                        {state.users.length > 0 ? (
+                                            state.users.map(user => (
+                                                // Key se utiliza para facilitar el renderizado
+                                                <UserCard key={user.id} user={user} />
+                                            ))
+                                        ) : (
+                                            <div><NoOpponents /></div>
+                                        )}
+                                    </>
+                                )}
                             </div>
+                        </div>
 
-                            <div className='col-12'>
+                        <div className='col-12'>
+                            <FadeIn>
                                 <div className='pagination'>
                                     {currentPage > 1 && (
                                         <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
@@ -180,12 +184,12 @@ function SelectOpponent() {
                                         <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
                                     )}
                                 </div>
-                            </div>
-
+                            </FadeIn>
                         </div>
+
                     </div>
-                </main>
-            </FadeIn>
+                </div>
+            </main>
         </UsersContext.Provider>
     )
 }

@@ -118,36 +118,40 @@ function History() {
 
     return (
         <HistoryGamesContext.Provider value={{ state, dispatch }}>
-            <FadeIn>
-                <main className="history-games">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
+            <main className="history-games">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <FadeIn>
                                 <PageTitle title="Games history" subtitle="Finished games" />
-                            </div>
+                            </FadeIn>
+                        </div>
 
-                            <div className="col-12">
-                                <div className="row games-history-container mt-5">
-                                    {state.isFetching ? (
-                                        <Loader />
-                                    ) : state.hasError ? (
+                        <div className="col-12">
+                            <div className="row games-history-container mt-5">
+                                {state.isFetching ? (
+                                    <Loader />
+                                ) : state.hasError ? (
+                                    <FadeIn>
                                         <FetchError />
-                                    ) : (
-                                        <>
-                                            {/* Si hay juegos, genera un componente por cada uno */}
-                                            {state.historyGames.length > 0 ? (
-                                                state.historyGames.map(game => (
-                                                    <FinishedGame key={game.id} game={game} />
-                                                ))
-                                            ) : (
-                                                <div><NoGameItems /></div>
-                                            )}
-                                        </>
-                                    )}
-                                </div>
+                                    </FadeIn>
+                                ) : (
+                                    <>
+                                        {/* Si hay juegos, genera un componente por cada uno */}
+                                        {state.historyGames.length > 0 ? (
+                                            state.historyGames.map(game => (
+                                                <FinishedGame key={game.id} game={game} />
+                                            ))
+                                        ) : (
+                                            <div><NoGameItems /></div>
+                                        )}
+                                    </>
+                                )}
                             </div>
+                        </div>
 
-                            <div className='col-12'>
+                        <div className='col-12'>
+                            <FadeIn>
                                 <div className='pagination'>
                                     {currentPage > 1 && (
                                         <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
@@ -156,12 +160,12 @@ function History() {
                                         <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
                                     )}
                                 </div>
-                            </div>
-
+                            </FadeIn>
                         </div>
+
                     </div>
-                </main>
-            </FadeIn>
+                </div>
+            </main>
         </HistoryGamesContext.Provider>
     )
 }

@@ -6,6 +6,7 @@ import { AuthContext } from "../../../../../App"
 import { apiUrl } from "../../../../../utils/api-url"
 import { refreshToken } from "../../../../../utils/refresh-token"
 import { CREATE_GAME_FAILURE, CREATE_GAME_REQUEST, CREATE_GAME_SUCCESS } from "../../action-types"
+import FadeIn from "../../../../../components/FadeIn"
 
 const initialState = {
     playerOneId: '',
@@ -98,16 +99,18 @@ function UserCard({ user }) {
 
     return (
         <div className="col-12 col-lg-6 col-xl-4 text-truncate">
-            <button onClick={() => createGame(user.id)} disabled={state.isSending} className="user-card">
-                <PersonFill />
-                {
-                    state.isSending ?
-                        ("Please wait...") :
-                        state.hasError ?
-                            ("Error selecting this user") :
-                            <h4>{user.nickname}</h4>
-                }
-            </button>
+            <FadeIn>
+                <button onClick={() => createGame(user.id)} disabled={state.isSending} className="user-card">
+                    <PersonFill />
+                    {
+                        state.isSending ?
+                            ("Please wait...") :
+                            state.hasError ?
+                                ("Error selecting this user") :
+                                <h4>{user.nickname}</h4>
+                    }
+                </button>
+            </FadeIn>
         </div>
     )
 }

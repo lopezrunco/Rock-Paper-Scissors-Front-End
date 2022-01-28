@@ -124,36 +124,40 @@ function OnPlayGames() {
 
     return (
         <OnPlayGamesContext.Provider value={{ state, dispatch }}>
-            <FadeIn>
-                <main>
-                    <div className='container'>
-                        <div className="row">
-                            <div className="col-12">
+            <main>
+                <div className='container'>
+                    <div className="row">
+                        <div className="col-12">
+                            <FadeIn>
                                 <PageTitle title="On play games" subtitle="Continue the fun" />
-                            </div>
+                            </FadeIn>
+                        </div>
 
-                            <div className="col-12">
-                                <div className='row on-play-games-container mt-5'>
-                                    {state.isFetching ? (
-                                        <Loader />
-                                    ) : state.hasError ? (
+                        <div className="col-12">
+                            <div className='row on-play-games-container mt-5'>
+                                {state.isFetching ? (
+                                    <Loader />
+                                ) : state.hasError ? (
+                                    <FadeIn>
                                         <FetchError />
-                                    ) : (
-                                        <>
-                                            {/* Si hay onplay games, genera un componente por cada uno */}
-                                            {state.games.length > 0 ? (
-                                                state.games.map(game => (
-                                                    <OnPlayGame key={game.id} game={game} />
-                                                ))
-                                            ) : (
-                                                <div><NoGameItems /></div>
-                                            )}
-                                        </>
-                                    )}
-                                </div>
+                                    </FadeIn>
+                                ) : (
+                                    <>
+                                        {/* Si hay onplay games, genera un componente por cada uno */}
+                                        {state.games.length > 0 ? (
+                                            state.games.map(game => (
+                                                <OnPlayGame key={game.id} game={game} />
+                                            ))
+                                        ) : (
+                                            <NoGameItems />
+                                        )}
+                                    </>
+                                )}
                             </div>
+                        </div>
 
-                            <div className='col-12'>
+                        <div className='col-12'>
+                            <FadeIn>
                                 <div className='pagination'>
                                     {currentPage > 1 && (
                                         <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
@@ -162,12 +166,12 @@ function OnPlayGames() {
                                         <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
                                     )}
                                 </div>
-                            </div>
-
+                            </FadeIn>
                         </div>
+
                     </div>
-                </main>
-            </FadeIn>
+                </div>
+            </main>
         </OnPlayGamesContext.Provider>
     )
 }

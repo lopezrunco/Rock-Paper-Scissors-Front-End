@@ -8,6 +8,7 @@ import paperImg from '../../../../../assets/img/paper.png'
 import scissorsImg from '../../../../../assets/img/scissors.png'
 import questionImg from '../../../../../assets/img/question.png'
 import './style.scss'
+import FadeIn from '../../../../../components/FadeIn'
 
 function OnPlayGame({ game }) {
     const { state: authState } = useContext(AuthContext)
@@ -67,21 +68,25 @@ function OnPlayGame({ game }) {
 
     return (
         <div className="col-12 col-lg-4 onplay-game-wrapper">
-            <div className='game-card--onplay'>
-                <div className="row">
-                    {/* TODO: Mostrar la fecha de iniciado el juego */}
-                    <div className="col-6 moves-col">
-                        <h6 className='mb-4'>{game.playerOneNickname}</h6>
-                        {movesPlayerOne}
-                    </div>
-                    <div className="col-6 moves-col">
-                        <h6 className='mb-4'>{game.playerTwoNickname}</h6>
-                        {movesPlayerTwo}
+            <FadeIn>
+                <div className='game-card--onplay'>
+                    <div className="row">
+                        {/* TODO: Mostrar la fecha de iniciado el juego */}
+                        <div className="col-6 moves-col">
+                            <h6 className='mb-4'>{game.playerOneNickname}</h6>
+                            {movesPlayerOne}
+                        </div>
+                        <div className="col-6 moves-col">
+                            <h6 className='mb-4'>{game.playerTwoNickname}</h6>
+                            {movesPlayerTwo}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </FadeIn>
             {allowContinueButton && (
-                <Link to={`/games/play/${game.id}`} className='primary-button'>Continue</Link>
+                <FadeIn>
+                    <Link to={`/games/play/${game.id}`} className='primary-button'>Continue</Link>
+                </FadeIn>
             )}
         </div>
     )
