@@ -1,10 +1,12 @@
 import { House } from 'react-bootstrap-icons'
+
 import forbiddenImg from '../../../assets/img/403.png'
+import FadeIn from '../../../components/FadeIn'
 import './style.scss'
 
 function Forbidden() {
     return (
-        <div>
+        <FadeIn>
             <main className="forbidden">
                 <div className="container">
                     <div className="row justify-content-center">
@@ -22,7 +24,7 @@ function Forbidden() {
                     </div>
                 </div>
             </main>
-        </div>
+        </FadeIn>
     )
 }
 

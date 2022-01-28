@@ -6,6 +6,8 @@ import { ENABLE_MFA, HIDE_LOADER, SHOW_LOADER } from '../../../action-types'
 import { AuthContext } from '../../../App'
 import { apiUrl } from '../../../utils/api-url'
 import { refreshToken } from '../../../utils/refresh-token'
+
+import FadeIn from '../../../components/FadeIn'
 import PageTitle from "../../../components/PageTitle"
 
 import './style.scss'
@@ -102,85 +104,87 @@ function DashBoard() {
     }
 
     return (
-        <main className="dashboard">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <PageTitle title={authState.user.nickname} subtitle="Your profile" />
-                        <div className='separator'></div>
-                        <p>Below you can find small summary of your user info and preferences.</p>
-                    </div>
-                </div>
-                <div className='row mt-4'>
-
-                    <div className='col-12'>
-                        <div className='info-card user'>
-                            <h6>User info</h6>
+        <FadeIn>
+            <main className="dashboard">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <PageTitle title={authState.user.nickname} subtitle="Your profile" />
                             <div className='separator'></div>
-                            <p>Nickname: <strong>{authState.user.nickname}</strong></p>
-                            <p>User ID: <strong>{authState.user.id}</strong></p>
-                            <p>Email: <strong>{authState.user.email}</strong></p>
+                            <p>Below you can find small summary of your user info and preferences.</p>
                         </div>
                     </div>
+                    <div className='row mt-4'>
 
-                    <div className='col-12'>
-                        <div className='info-card preferences'>
-
-                            <h6>Preferences</h6>
-                            <div className='separator'></div>
-                            <div className='enable-mfa-info'>
-                                <p>
-                                    Multi-Factor Authentication (MFA) increases security of your account.<br />
-                                    To use this feature, click on the button <strong>Enable MFA.</strong>
-                                </p>
-
-                                {authState.user.mfaEnabled ? (
-                                    <button className='primary-button--freezed'>Enabled</button>
-                                ) : (
-                                    <button onClick={handleEnableMfa} disabled={authState.user.mfaEnabled} className='primary-button'>Enable MFA</button>
-                                )}
-                            </div>
-
-                            <div className='enable-mfa-container'>
-                                {/* Se muestra solo si el MFA tiene valor */}
-                                {
-                                    state.mfa &&
-                                    <div className='qr-container'>
-                                        <img className='qr-img' alt='mfa-qr' src={state.mfa.qr} />
-                                        <small className='instructions'>
-                                            Scan the image above into a MFA app (e.g. Google Authenticator) <br />
-                                            Next time you login, we will ask for an acces token generated with the app.
-                                        </small>
-                                        <small>Secret key: <span className='secret-key'>{state.mfa.secret}</span></small>
-                                    </div>
-                                }
+                        <div className='col-12'>
+                            <div className='info-card user'>
+                                <h6>User info</h6>
+                                <div className='separator'></div>
+                                <p>Nickname: <strong>{authState.user.nickname}</strong></p>
+                                <p>User ID: <strong>{authState.user.id}</strong></p>
+                                <p>Email: <strong>{authState.user.email}</strong></p>
                             </div>
                         </div>
-                    </div>
 
-                    <div className='col-12'>
-                        <div className='info-card'>
-                            <h6>Game tutorial</h6>
-                            <div className='separator'></div>
-                            <div className='row'>
-                                <div className='col-lg-10'>
+                        <div className='col-12'>
+                            <div className='info-card preferences'>
+
+                                <h6>Preferences</h6>
+                                <div className='separator'></div>
+                                <div className='enable-mfa-info'>
                                     <p>
-                                        If this is your first time around here or you want to refresh your game skills, go to the tutorial page.
+                                        Multi-Factor Authentication (MFA) increases security of your account.<br />
+                                        To use this feature, click on the button <strong>Enable MFA.</strong>
                                     </p>
+
+                                    {authState.user.mfaEnabled ? (
+                                        <button className='primary-button--freezed'>Enabled</button>
+                                    ) : (
+                                        <button onClick={handleEnableMfa} disabled={authState.user.mfaEnabled} className='primary-button'>Enable MFA</button>
+                                    )}
                                 </div>
-                                <div className='col-lg-2'>
-                                    <a href='/tutorial' className='primary-button'>Tutorial</a>
+
+                                <div className='enable-mfa-container'>
+                                    {/* Se muestra solo si el MFA tiene valor */}
+                                    {
+                                        state.mfa &&
+                                        <div className='qr-container'>
+                                            <img className='qr-img' alt='mfa-qr' src={state.mfa.qr} />
+                                            <small className='instructions'>
+                                                Scan the image above into a MFA app (e.g. Google Authenticator) <br />
+                                                Next time you login, we will ask for an acces token generated with the app.
+                                            </small>
+                                            <small>Secret key: <span className='secret-key'>{state.mfa.secret}</span></small>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
+
+                        <div className='col-12'>
+                            <div className='info-card'>
+                                <h6>Game tutorial</h6>
+                                <div className='separator'></div>
+                                <div className='row'>
+                                    <div className='col-lg-10'>
+                                        <p>
+                                            If this is your first time around here or you want to refresh your game skills, go to the tutorial page.
+                                        </p>
+                                    </div>
+                                    <div className='col-lg-2'>
+                                        <a href='/tutorial' className='primary-button'>Tutorial</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
+
+
                 </div>
-
-
-
-            </div>
-        </main>
+            </main>
+        </FadeIn>
     )
 }
 

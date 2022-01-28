@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+import FadeIn from '../../../components/FadeIn'
 import Scissors from './components/Scissors'
 import Rock from './components/Rock'
 import Paper from './components/Paper'
@@ -67,76 +68,78 @@ function App() {
     }
 
     return (
-        <main className="single-player-wrapper">
-            <div className='container'>
+        <FadeIn>
+            <main className="single-player-wrapper">
+                <div className='container'>
 
-                <div className='row message-card'>
-                    <div className='col-md-6'>
-                        <div className=''>
-                            <h3>Single player</h3>
-                        </div>
-                    </div>
-                    <div className='col-md-6 wins-losses'>
-                        {/* Jugadas perdidas y ganadas */}
-                        <div className='wins'>
-                            <h4 className='number'>{wins}</h4>
-                            <h6 className='text'>{wins === 1 ? 'Win' : 'Wins'}</h6>
-                        </div>
-                        <div className='losses'>
-                            <h4 className='number'>{losses}</h4>
-                            <h6 className='text'>{losses === 1 ? 'Loss' : 'Losses'}</h6>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 
-                    Modal que muestra resultado de la jugada. 
-                    Se muestra solo si gameState tiene valor.
-                    Segun el estado del juego cambia de color y mensaje
-                */}
-                {gameState && (
-                    <span onClick={() => restartGame()}>
-                        <div className={`game-state ${gameState}`}>
-                            {gameState === 'win' && <h3>You won!</h3>}
-                            {gameState === 'lose' && <h3>You lost!</h3>}
-                            {gameState === 'draw' && <h3>You drew!</h3>}
-                            <div className='show-moves'>
-                                <div className='move'>
-                                    <h6>Your choice:</h6>
-                                    <p>{renderComponent(userChoice)}</p>
-                                </div>
-                                <div className='move'>
-                                    <h6>Random choice:</h6>
-                                    <p>{renderComponent(secondUserChoice)}</p>
-                                </div>
+                    <div className='row message-card'>
+                        <div className='col-md-6'>
+                            <div className=''>
+                                <h3>Single player</h3>
                             </div>
                         </div>
-                    </span>
-                )}
-
-                <div className='choices row'>
-                    {/* Botones para jugar */}
-                    <div className='col-12 col-lg-8 user-choices'>
-                        <p className='primary-button--freezed'>Your choices:</p>
-                        <div className='message-card'>
-                            <span className='rock' onClick={() => handleUserChoice(1)}><Rock /></span>
-                            <span className='paper' onClick={() => handleUserChoice(2)}><Paper /></span>
-                            <span className='scissors' onClick={() => handleUserChoice(3)}><Scissors /></span>
+                        <div className='col-md-6 wins-losses'>
+                            {/* Jugadas perdidas y ganadas */}
+                            <div className='wins'>
+                                <h4 className='number'>{wins}</h4>
+                                <h6 className='text'>{wins === 1 ? 'Win' : 'Wins'}</h6>
+                            </div>
+                            <div className='losses'>
+                                <h4 className='number'>{losses}</h4>
+                                <h6 className='text'>{losses === 1 ? 'Loss' : 'Losses'}</h6>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Muestra la jugada del player 2 */}
-                    <div className='col-12 col-lg-4 random-choices'>
-                        <p className='primary-button--freezed'>Random choice:</p>
-                        <div className='message-card'>
-                            <span className='player-two-choice'><Question /></span>
+                    {/* Modal que muestra resultado de la jugada. 
+                    Se muestra solo si gameState tiene valor y segun el estado del juego cambia de color y mensaje*/}
+
+                    {gameState && (
+                        <span onClick={() => restartGame()}>
+                            <div className={`game-state ${gameState}`}>
+                                <FadeIn>
+                                    {gameState === 'win' && <h3 className='text-center mb-5'>You won!</h3>}
+                                    {gameState === 'lose' && <h3 className='text-center mb-5'>You lost!</h3>}
+                                    {gameState === 'draw' && <h3 className='text-center mb-5'>You drew!</h3>}
+                                    <div className='show-moves'>
+                                        <div className='move'>
+                                            <h6>Your choice:</h6>
+                                            <p>{renderComponent(userChoice)}</p>
+                                        </div>
+                                        <div className='move'>
+                                            <h6>Random choice:</h6>
+                                            <p>{renderComponent(secondUserChoice)}</p>
+                                        </div>
+                                    </div>
+                                </FadeIn>
+                            </div>
+                        </span>
+                    )}
+
+                    <div className='choices row'>
+                        {/* Botones para jugar */}
+                        <div className='col-12 col-lg-8 user-choices'>
+                            <p className='primary-button--freezed'>Your choices:</p>
+                            <div className='message-card'>
+                                <span className='rock' onClick={() => handleUserChoice(1)}><Rock /></span>
+                                <span className='paper' onClick={() => handleUserChoice(2)}><Paper /></span>
+                                <span className='scissors' onClick={() => handleUserChoice(3)}><Scissors /></span>
+                            </div>
                         </div>
+
+                        {/* Muestra la jugada del player 2 */}
+                        <div className='col-12 col-lg-4 random-choices'>
+                            <p className='primary-button--freezed'>Random choice:</p>
+                            <div className='message-card'>
+                                <span className='player-two-choice'><Question /></span>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
-
-            </div>
-        </main>
+            </main>
+        </FadeIn>
     )
 }
 

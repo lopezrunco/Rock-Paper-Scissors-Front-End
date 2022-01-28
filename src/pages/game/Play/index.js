@@ -11,6 +11,7 @@ import { EDIT_GAME_FAILURE, EDIT_GAME_REQUEST, EDIT_GAME_SUCCESS, FORM_INPUT_CHA
 
 import PageTitle from "../../../components/PageTitle"
 import NavigationLink from "../../../components/NavigationLink"
+import FadeIn from "../../../components/FadeIn"
 import './style.scss'
 
 const initialState = {
@@ -116,64 +117,66 @@ function Play() {
     }
 
     return (
-        <main className="play">
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-12'>
-                        <PageTitle title="Do your next move" subtitle="Continue the game" />
-                    </div>
-                    <div className='col-12'>
-
-                        <div className="choices message-card">
-                            <label htmlFor="rock">
-                                <img src={rockImg} alt="Rock" />
-                                <input
-                                    type="radio"
-                                    value={1}
-                                    onChange={handleInputChange}
-                                    name="choice"
-                                    id="rock"
-                                />
-                            </label>
-                            <label htmlFor="paper">
-                                <img src={paperImg} alt="Paper" />
-                                <input
-                                    type="radio"
-                                    value={2}
-                                    onChange={handleInputChange}
-                                    name="choice"
-                                    id="paper"
-                                />
-                            </label>
-                            <label htmlFor="scissors">
-                                <img src={scissorsImg} alt="Scissors" />
-                                <input
-                                    type="radio"
-                                    value={3}
-                                    onChange={handleInputChange}
-                                    name="choice"
-                                    id="scissors"
-                                />
-                            </label>
+        <FadeIn>
+            <main className="play">
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-12'>
+                            <PageTitle title="Do your next move" subtitle="Continue the game" />
                         </div>
+                        <div className='col-12'>
 
-                        <h6 className="message-card">{state.choice === 1 ? ("Rock") : state.choice === 2 ? ("Paper") : state.choice === 3 ? ("Scissors") : ("Nothing")} selected</h6>
+                            <div className="choices message-card">
+                                <label htmlFor="rock">
+                                    <img src={rockImg} alt="Rock" />
+                                    <input
+                                        type="radio"
+                                        value={1}
+                                        onChange={handleInputChange}
+                                        name="choice"
+                                        id="rock"
+                                    />
+                                </label>
+                                <label htmlFor="paper">
+                                    <img src={paperImg} alt="Paper" />
+                                    <input
+                                        type="radio"
+                                        value={2}
+                                        onChange={handleInputChange}
+                                        name="choice"
+                                        id="paper"
+                                    />
+                                </label>
+                                <label htmlFor="scissors">
+                                    <img src={scissorsImg} alt="Scissors" />
+                                    <input
+                                        type="radio"
+                                        value={3}
+                                        onChange={handleInputChange}
+                                        name="choice"
+                                        id="scissors"
+                                    />
+                                </label>
+                            </div>
 
-                        <div className="buttons-group">
-                            <NavigationLink to="/games/on-play" className="primary-button--faded">Cancel</NavigationLink>
-                            {state.choice && (
-                                <button onClick={handleFormSubmit} disabled={state.isSubmitting} className="primary-button">
-                                    {state.isSubmitting ? ("Please wait...") : ("Play!")}
-                                </button>
-                            )}
+                            <h6 className="message-card">{state.choice === 1 ? ("Rock") : state.choice === 2 ? ("Paper") : state.choice === 3 ? ("Scissors") : ("Nothing")} selected</h6>
+
+                            <div className="buttons-group">
+                                <NavigationLink to="/games/on-play" className="primary-button--faded">Cancel</NavigationLink>
+                                {state.choice && (
+                                    <button onClick={handleFormSubmit} disabled={state.isSubmitting} className="primary-button">
+                                        {state.isSubmitting ? ("Please wait...") : ("Play!")}
+                                    </button>
+                                )}
+                            </div>
+
+                            {state.errorMessage && (<span className="form-error">{state.errorMessage}</span>)}
+
                         </div>
-
-                        {state.errorMessage && (<span className="form-error">{state.errorMessage}</span>)}
-
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </FadeIn>
     )
 }
 

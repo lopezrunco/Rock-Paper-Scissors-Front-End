@@ -13,6 +13,7 @@ import PageTitle from "../../../components/PageTitle"
 import { AuthContext } from '../../../App'
 import Loader from "../../../components/Loader"
 import FetchError from "../../../components/FetchError"
+import FadeIn from "../../../components/FadeIn"
 
 // Creacion de contexto para el historico de juegos
 export const HistoryGamesContext = createContext()
@@ -117,48 +118,50 @@ function History() {
 
     return (
         <HistoryGamesContext.Provider value={{ state, dispatch }}>
-            <main className="history-games">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <PageTitle title="Games history" subtitle="Finished games" />
-                        </div>
-
-                        <div className="col-12">
-                            <div className="row games-history-container mt-5">
-                                {state.isFetching ? (
-                                    <Loader />
-                                ) : state.hasError ? (
-                                    <FetchError />
-                                ) : (
-                                    <>
-                                        {/* Si hay juegos, genera un componente por cada uno */}
-                                        {state.historyGames.length > 0 ? (
-                                            state.historyGames.map(game => (
-                                                <FinishedGame key={game.id} game={game} />
-                                            ))
-                                        ) : (
-                                            <div><NoGameItems /></div>
-                                        )}
-                                    </>
-                                )}
+            <FadeIn>
+                <main className="history-games">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <PageTitle title="Games history" subtitle="Finished games" />
                             </div>
-                        </div>
 
-                        <div className='col-12'>
-                            <div className='pagination'>
-                                {currentPage > 1 && (
-                                    <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
-                                )}
-                                {currentPage < state.historyGames.length && (
-                                    <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
-                                )}
+                            <div className="col-12">
+                                <div className="row games-history-container mt-5">
+                                    {state.isFetching ? (
+                                        <Loader />
+                                    ) : state.hasError ? (
+                                        <FetchError />
+                                    ) : (
+                                        <>
+                                            {/* Si hay juegos, genera un componente por cada uno */}
+                                            {state.historyGames.length > 0 ? (
+                                                state.historyGames.map(game => (
+                                                    <FinishedGame key={game.id} game={game} />
+                                                ))
+                                            ) : (
+                                                <div><NoGameItems /></div>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
                             </div>
-                        </div>
 
+                            <div className='col-12'>
+                                <div className='pagination'>
+                                    {currentPage > 1 && (
+                                        <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
+                                    )}
+                                    {currentPage < state.historyGames.length && (
+                                        <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
+                                    )}
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </FadeIn>
         </HistoryGamesContext.Provider>
     )
 }

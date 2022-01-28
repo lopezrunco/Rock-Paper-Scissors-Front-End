@@ -13,6 +13,7 @@ import PageTitle from '../../../components/PageTitle'
 import UserCard from './components/UserCard'
 import Loader from '../../../components/Loader'
 import FetchError from '../../../components/FetchError'
+import FadeIn from '../../../components/FadeIn'
 
 // Creacion de contexto para los datos de usuarios
 export const UsersContext = createContext()
@@ -132,57 +133,59 @@ function SelectOpponent() {
         // Todos los elementos que se renderizan aqui tienen acceso al contexto de usuarios,
         // puntualmente al state y al dispatch.
         <UsersContext.Provider value={{ state, dispatch }}>
-            <main className='select-opponent'>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <PageTitle title="Select your opponent" subtitle="Begin a new game" />
-                            <div className='separator'></div>
-                            {!state.hasError && (
-                                <div className='count-info'>
-                                    <PersonFill />
-                                    <p>Available in this page:</p>
-                                    <h6>{state.users.length}</h6>
+            <FadeIn>
+                <main className='select-opponent'>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <PageTitle title="Select your opponent" subtitle="Begin a new game" />
+                                <div className='separator'></div>
+                                {!state.hasError && (
+                                    <div className='count-info'>
+                                        <PersonFill />
+                                        <p>Available in this page:</p>
+                                        <h6>{state.users.length}</h6>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="col-12">
+                                <div className='row users-container mt-5 overflow-hidden'>
+                                    {state.isFetching ? (
+                                        <Loader />
+                                    ) : state.hasError ? (
+                                        <FetchError />
+                                    ) : (
+                                        <>
+                                            {/* Si hay usuarios, mapea el array y genera un componente por cada uno */}
+                                            {state.users.length > 0 ? (
+                                                state.users.map(user => (
+                                                    // Key se utiliza para facilitar el renderizado
+                                                    <UserCard key={user.id} user={user} />
+                                                ))
+                                            ) : (
+                                                <div><NoOpponents /></div>
+                                            )}
+                                        </>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-
-                        <div className="col-12">
-                            <div className='row users-container mt-5 overflow-hidden'>
-                                {state.isFetching ? (
-                                    <Loader />
-                                ) : state.hasError ? (
-                                    <FetchError />
-                                ) : (
-                                    <>
-                                        {/* Si hay usuarios, mapea el array y genera un componente por cada uno */}
-                                        {state.users.length > 0 ? (
-                                            state.users.map(user => (
-                                                // Key se utiliza para facilitar el renderizado
-                                                <UserCard key={user.id} user={user} />
-                                            ))
-                                        ) : (
-                                            <div><NoOpponents /></div>
-                                        )}
-                                    </>
-                                )}
                             </div>
-                        </div>
 
-                        <div className='col-12'>
-                            <div className='pagination'>
-                                {currentPage > 1 && (
-                                    <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
-                                )}
-                                {currentPage < state.users.length && (
-                                    <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
-                                )}
+                            <div className='col-12'>
+                                <div className='pagination'>
+                                    {currentPage > 1 && (
+                                        <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
+                                    )}
+                                    {currentPage < state.users.length && (
+                                        <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
+                                    )}
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </FadeIn>
         </UsersContext.Provider>
     )
 }

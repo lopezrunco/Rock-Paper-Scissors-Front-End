@@ -14,6 +14,7 @@ import PageTitle from '../../../components/PageTitle'
 import NoGameItems from '../../../components/NoGameItems'
 import Loader from '../../../components/Loader'
 import FetchError from '../../../components/FetchError'
+import FadeIn from '../../../components/FadeIn'
 
 // Creacion de contexto para los onplay games
 export const OnPlayGamesContext = createContext()
@@ -123,48 +124,50 @@ function OnPlayGames() {
 
     return (
         <OnPlayGamesContext.Provider value={{ state, dispatch }}>
-            <main>
-                <div className='container'>
-                    <div className="row">
-                        <div className="col-12">
-                            <PageTitle title="On play games" subtitle="Continue the fun" />
-                        </div>
-
-                        <div className="col-12">
-                            <div className='row on-play-games-container mt-5'>
-                                {state.isFetching ? (
-                                    <Loader />
-                                ) : state.hasError ? (
-                                    <FetchError />
-                                ) : (
-                                    <>
-                                        {/* Si hay onplay games, genera un componente por cada uno */}
-                                        {state.games.length > 0 ? (
-                                            state.games.map(game => (
-                                                <OnPlayGame key={game.id} game={game} />
-                                            ))
-                                        ) : (
-                                            <div><NoGameItems /></div>
-                                        )}
-                                    </>
-                                )}
+            <FadeIn>
+                <main>
+                    <div className='container'>
+                        <div className="row">
+                            <div className="col-12">
+                                <PageTitle title="On play games" subtitle="Continue the fun" />
                             </div>
-                        </div>
 
-                        <div className='col-12'>
-                            <div className='pagination'>
-                                {currentPage > 1 && (
-                                    <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
-                                )}
-                                {currentPage < state.games.length && (
-                                    <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
-                                )}
+                            <div className="col-12">
+                                <div className='row on-play-games-container mt-5'>
+                                    {state.isFetching ? (
+                                        <Loader />
+                                    ) : state.hasError ? (
+                                        <FetchError />
+                                    ) : (
+                                        <>
+                                            {/* Si hay onplay games, genera un componente por cada uno */}
+                                            {state.games.length > 0 ? (
+                                                state.games.map(game => (
+                                                    <OnPlayGame key={game.id} game={game} />
+                                                ))
+                                            ) : (
+                                                <div><NoGameItems /></div>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
                             </div>
-                        </div>
 
+                            <div className='col-12'>
+                                <div className='pagination'>
+                                    {currentPage > 1 && (
+                                        <button className='primary-button' onClick={() => prevPage()}><ChevronLeft /> Prev</button>
+                                    )}
+                                    {currentPage < state.games.length && (
+                                        <button className='primary-button' onClick={() => nextPage()}>Next <ChevronRight /></button>
+                                    )}
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </FadeIn>
         </OnPlayGamesContext.Provider>
     )
 }

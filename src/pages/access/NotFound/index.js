@@ -1,11 +1,12 @@
 import { House } from 'react-bootstrap-icons'
 
 import notFoundImg from '../../../assets/img/404.png'
+import FadeIn from '../../../components/FadeIn'
 import './style.scss'
 
 function NotFound() {
     return (
-        <div>
+        <FadeIn>
             <main className="page-not-found">
                 <div className="container">
                     <div className="row justify-content-center">
@@ -25,7 +26,7 @@ function NotFound() {
                     </div>
                 </div>
             </main>
-        </div>
+        </FadeIn>
     )
 }
 

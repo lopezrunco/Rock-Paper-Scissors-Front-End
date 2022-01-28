@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { TrophyFill } from 'react-bootstrap-icons'
 
+import FadeIn from '../../../../../components/FadeIn'
 import rockImg from '../../../../../assets/img/rock.png'
 import paperImg from '../../../../../assets/img/paper.png'
 import scissorsImg from '../../../../../assets/img/scissors.png'
@@ -131,19 +132,21 @@ function FinishedGame({ game }) {
 
             </div>
             <span onClick={handleClick} className='winner-card'><TrophyFill /><strong>{winnerNickname}</strong></span>
-            
+
             {
                 openWinnerDetails === true &&
                 <div className='winner-details' onClick={handleClick}>
-                    <span className='winner'>
-                        <TrophyFill /><strong>{winnerNickname}</strong>
-                    </span>
-                    <span className='details'>
-                        <p>Game details:</p>
-                        <p><strong>{game.playerOneNickname}:</strong> {playerOneWins}</p>
-                        <p><strong>{game.playerTwoNickname}:</strong> {playerTwoWins}</p>
-                        <p><strong>Draws:</strong> {draw}</p>
-                    </span>
+                    <FadeIn>
+                        <span className='winner'>
+                            <TrophyFill /><strong>{winnerNickname}</strong>
+                        </span>
+                        <span className='details'>
+                            <p>Game details:</p>
+                            <p><strong>{game.playerOneNickname}:</strong> {playerOneWins}</p>
+                            <p><strong>{game.playerTwoNickname}:</strong> {playerTwoWins}</p>
+                            <p><strong>Draws:</strong> {draw}</p>
+                        </span>
+                    </FadeIn>
                 </div>
             }
 
