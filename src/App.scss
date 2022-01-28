@@ -276,6 +276,22 @@ a:hover {
   }
 }
 
+@media screen and (max-width: 992px) {
+  .winner-details {
+    .winner {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      strong {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
+
 main {
   padding-top: 8vh;
 

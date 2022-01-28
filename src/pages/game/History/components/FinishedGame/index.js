@@ -138,9 +138,9 @@ function FinishedGame({ game }) {
             {
                 openWinnerDetails === true &&
                 <div className='winner-details' onClick={handleClick}>
-                    <FadeIn>
+                    <FadeIn className='w-100'>
                         <span className='winner'>
-                            <TrophyFill /><strong>{winnerNickname}</strong>
+                            <TrophyFill /><strong className='text-truncate'>{winnerNickname}</strong>
                         </span>
                         <span className='details'>
                             <p>Game details:</p>
