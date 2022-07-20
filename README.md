@@ -12,6 +12,7 @@
   <p align="center">
     Web app based in the classic Rock, paper & scissors game (MongoDB, Express, React & Node)
     <br />
+    <a href='https://rpsgameaplus.netlify.app/single-player-start-screen'>View demo</a>
   </p>
 </div>
 
