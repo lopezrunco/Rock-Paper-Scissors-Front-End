@@ -1,6 +1,6 @@
 import { Person, House } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react/cjs/react.development'
+import { useContext } from 'react'
 
 import { AuthContext } from '../../../App'
 import notFoundImg from '../../../assets/img/logged-out.png'

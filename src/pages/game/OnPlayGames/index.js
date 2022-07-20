@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react/cjs/react.development'
+import { useContext } from 'react'
 import { ChevronLeft, ChevronRight } from 'react-bootstrap-icons'
 
 import { refreshToken } from '../../../utils/refresh-token'
